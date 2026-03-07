@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mulberry Boost - Premium Energy Snack | Natürlich & plastikfrei</title>
+  <meta name="description" content="Mulberry Boost: Natürlicher Energy Crunch aus Maulbeeren & Nüssen. 100% papierverpackt, ohne Zuckerzusatz. Jetzt für 9,99€ shoppen!" />
+  <meta property="og:title" content="Mulberry Boost - Premium Energy Snack" />
+  <meta property="og:description" content="Natürlicher Energy Crunch aus Maulbeeren & Nüssen. 100% papierverpackt." />
+  <meta property="og:type" content="product" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org/","@type":"Product","name":"Mulberry Boost","description":"Premium Talkan Energy Snack aus Maulbeeren, Walnüssen & Mandeln","offers":{"@type":"Offer","priceCurrency":"EUR","price":"9.99","availability":"https://schema.org/InStock"}}
+  </script>
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #0e0e0e; --bg2: #141414; --text: #F5F0E8; --text2: #b0a898;
+      --card: #1a1a1a; --border: #2a2a2a; --glass: rgba(255,255,255,0.04);
+    }
+    :root[data-theme="light"] {
+      --bg: #FAF7F2; --bg2: #F0EBE1; --text: #1A1208; --text2: #5a4e3c;
+      --card: #ffffff; --border: #e0d8cc; --glass: rgba(0,0,0,0.03);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 18px; transition: background 0.4s, color 0.4s; }
+    h1,h2,h3,h4 { font-family: 'Montserrat', sans-serif; font-weight: 900; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* PALETTE */
+    /* Gold: #C9941A | Deep Green: #1E3A0F | Warm Cream: #F5F0E8 | Dark: #0e0e0e */
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(14,14,14,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,148,26,0.15);
+    }
+    .nav-logo {
+      font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
+      color: #C9941A;
+    }
+    .nav-right { display: flex; gap: 1rem; align-items: center; }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); color: var(--text);
+      padding: 0.35rem 0.9rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+    }
+    .nav-cta {
+      background: #C9941A; color: #0e0e0e; padding: 0.5rem 1.3rem;
+      border-radius: 25px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #e0a820; transform: scale(1.04); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      gap: 3rem; padding: 8rem 5% 4rem;
+      background: radial-gradient(ellipse at 70% 50%, rgba(30,58,15,0.5) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(201,148,26,0.08) 0%, transparent 50%),
+                  var(--bg);
+    }
+    .hero-left {}
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid rgba(201,148,26,0.4); background: rgba(201,148,26,0.08);
+      color: #C9941A; padding: 0.35rem 1rem; border-radius: 30px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    #hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.3rem); color: var(--text2);
+      font-weight: 400; letter-spacing: 1px; margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .hero-desc {
+      color: var(--text2); line-height: 1.8; font-size: 1rem;
+      max-width: 480px; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: #C9941A; color: #0e0e0e; padding: 0.9rem 2rem;
+      border-radius: 50px; font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,148,26,0.3); display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201,148,26,0.5); }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+      transition: border-color 0.2s, transform 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: #C9941A; transform: translateY(-3px); }
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 3rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat { }
+    .stat-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #C9941A; }
+    .stat-label { font-size: 0.8rem; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* HERO RIGHT - Product Images */
+    .hero-right {
+      position: relative; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .hero-img-card {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .hero-img-card:hover { transform: scale(1.03); }
+    .hero-img-card.large { grid-column: span 2; }
+    .hero-img-card img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-img-card.large img { height: 280px; }
+    .hero-img-card:not(.large) img { height: 180px; }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      overflow: hidden; background: #C9941A; padding: 0.7rem 0;
+    }
+    .marquee-inner {
+      display: flex; gap: 3rem; white-space: nowrap;
+      animation: marquee 20s linear infinite;
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 2px; color: #0e0e0e;
+      text-transform: uppercase;
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS COMMON */
+    section { padding: 6rem 5%; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-eyebrow {
+      display: inline-block; color: #C9941A; font-size: 0.75rem;
+      letter-spacing: 3px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.8rem;
+    }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; }
+
+    /* FEATURES */
+    #features { background: var(--bg2); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+    }
+    .feature-card {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem 2rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-6px); border-color: rgba(201,148,26,0.4); }
+    .feature-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+    .feature-card h3 { font-size: 1rem; color: #C9941A; margin-bottom: 0.6rem; letter-spacing: 1px; }
+    .feature-card p { font-size: 0.9rem; color: var(--text2); line-height: 1.7; }
+
+    /* PRODUKT */
+    #produkt {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto;
+    }
+    .produkt-gallery {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .produkt-gallery-img {
+      border-radius: 16px; overflow: hidden; border: 1px solid var(--border);
+      transition: transform 0.3s;
+    }
+    .produkt-gallery-img:hover { transform: scale(1.04); }
+    .produkt-gallery-img.tall { grid-row: span 2; }
+    .produkt-gallery-img img { width: 100%; height: 100%; object-fit: cover; }
+    .produkt-gallery-img.tall img { height: 340px; }
+    .produkt-gallery-img:not(.tall) img { height: 160px; }
+    .produkt-info h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 1.2rem; line-height: 1.1; }
+    .produkt-info > p { color: var(--text2); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+    .ingredients { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .ing-tag {
+      background: rgba(30,58,15,0.3); border: 1px solid rgba(30,58,15,0.6);
+      padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.82rem; color: #7ab84e;
+      font-weight: 500;
+    }
+    .nutrition-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.88rem; }
+    .nutrition-table th, .nutrition-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+    .nutrition-table th { color: #C9941A; font-weight: 700; text-align: left; }
+    .nutrition-table td:last-child { text-align: right; color: var(--text2); }
+
+    /* PACKAGING */
+    #packaging { background: var(--bg2); }
+    .pack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
+    .pack-card {
+      border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
+      background: var(--card); transition: transform 0.3s, border-color 0.3s;
+    }
+    .pack-card:hover { transform: translateY(-5px); border-color: rgba(201,148,26,0.4); }
+    .pack-card img { width: 100%; height: 240px; object-fit: cover; }
+    .pack-info { padding: 1.5rem; }
+    .pack-info h3 { font-size: 1rem; color: #C9941A; margin-bottom: 0.5rem; }
+    .pack-info p { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+    .review-card {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem; transition: transform 0.3s;
+    }
+    .review-card:hover { transform: translateY(-5px); }
+    .stars { color: #C9941A; margin-bottom: 1rem; font-size: 1rem; }
+    .review-text { font-style: italic; color: var(--text2); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem; }
+    .reviewer { font-size: 0.82rem; font-weight: 700; color: #C9941A; letter-spacing: 1px; }
+
+    /* SHOP */
+    #shop { max-width: 740px; margin: 0 auto; text-align: center; }
+    .countdown {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: rgba(201,148,26,0.08); border: 1px solid rgba(201,148,26,0.3);
+      border-radius: 12px; padding: 0.8rem 1.5rem; margin-bottom: 2.5rem;
+      font-size: 0.9rem;
+    }
+    .countdown span { color: #C9941A; font-weight: 700; font-size: 1.1rem; }
+    .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    .price-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem 1.5rem; text-align: center;
+      transition: border-color 0.3s;
+    }
+    .price-card.featured { border-color: #C9941A; position: relative; }
+    .price-card.featured::before {
+      content: "BESTSELLER"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: #C9941A; color: #0e0e0e; padding: 0.2rem 1rem;
+      border-radius: 20px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+    }
+    .price-card h3 { font-size: 0.85rem; color: var(--text2); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+    .price-amount { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.5rem; color: #C9941A; }
+    .price-sub { font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; }
+    .discount-badge { display: inline-block; background: #1E3A0F; color: #7ab84e; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.78rem; font-weight: 700; margin-top: 0.6rem; }
+    .shop-cta {
+      display: block; width: 100%;
+      background: #C9941A; color: #0e0e0e;
+      padding: 1.1rem 2rem; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem;
+      letter-spacing: 1px; border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,148,26,0.3);
+    }
+    .shop-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201,148,26,0.5); }
+    .payment-icons { margin-top: 1rem; font-size: 0.82rem; color: var(--text2); }
+
+    /* STICKY */
+    .sticky-cta {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300;
+      background: #C9941A; color: #0e0e0e;
+      padding: 0.85rem 1.5rem; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 1px; border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(201,148,26,0.4);
+      transition: transform 0.2s;
+    }
+    .sticky-cta:hover { transform: scale(1.05); }
+    .whatsapp-btn {
+      position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 300;
+      background: #25D366; color: #fff; width: 54px; height: 54px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+      transition: transform 0.2s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+
+    /* FOOTER */
+    footer {
+      background: #080808; padding: 4rem 5%;
+      text-align: center; color: var(--text2); font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.5rem; color: #C9941A; letter-spacing: 3px; margin-bottom: 1rem; }
+    footer p { line-height: 2; }
+    footer a { color: #C9941A; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; padding: 7rem 5% 3rem; }
+      .hero-right { margin-top: 2rem; }
+      #produkt { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pack-grid { grid-template-columns: 1fr; }
+      .price-cards { grid-template-columns: 1fr; }
+      nav { padding: 0.8rem 1.2rem; }
+      .hero-stats { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mulberry Boost</div>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()">☀️ Light</button>
+    <a href="#shop" class="nav-cta">Jetzt shoppen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">✦ Premium Superfood · Aus Afghanistan</div>
+    <h1>Mulberry<br/>Boost</h1>
+    <p class="hero-sub">Natural Energy Snack · 150g</p>
+    <p class="hero-desc">Traditioneller Talkan-Snack aus Maulbeeren, Walnüssen & Mandeln. 100% natürlich, handgepresst, in plastikfreier Kraftpapier-Box.</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-primary">Jetzt shoppen – 9,99€</a>
+      <a href="#produkt" class="btn-outline">Mehr erfahren</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Natürlich</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0g</div>
+        <div class="stat-label">Zuckerzusatz</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Zero</div>
+        <div class="stat-label">Plastic</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-card large">
+      <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" alt="Mulberry Boost Verpackung Premium" />
+    </div>
+    <div class="hero-img-card">
+      <img src="WhatsApp-Image-2026-03-07-at-17.32.20.jpg" alt="Talkan Snack Produkt" />
+    </div>
+    <div class="hero-img-card">
+      <img src="WhatsApp-Image-2026-03-07-at-17.31.58.jpg" alt="Talkan Stücke" />
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>✦ 100% NATÜRLICH</span><span>✦ ZERO PLASTIC</span><span>✦ FAIR TRADE AFGHANISTAN</span>
+    <span>✦ KEIN ZUCKERZUSATZ</span><span>✦ HANDGEPRESST</span><span>✦ VEGAN</span>
+    <span>✦ 100% NATÜRLICH</span><span>✦ ZERO PLASTIC</span><span>✦ FAIR TRADE AFGHANISTAN</span>
+    <span>✦ KEIN ZUCKERZUSATZ</span><span>✦ HANDGEPRESST</span><span>✦ VEGAN</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-header">
+    <span class="section-eyebrow">Warum Mulberry Boost</span>
+    <h2 class="section-title">Zero BS. Pure Natur.</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🌿</div>
+      <h3>100% Natürlich</h3>
+      <p>Keine Zusätze, keine Aromen, keine Konservierungsstoffe. Nur was die Natur gibt – seit Jahrhunderten.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">♻️</div>
+      <h3>Zero Plastic</h3>
+      <p>FSC-zertifizierte Kraftpapier-Box mit Sichtfenster. Kompostierbar, story-worthy, konsequent nachhaltig.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">⚡</div>
+      <h3>Echter Boost</h3>
+      <p>Maulbeeren + Walnüsse + Mandeln = natürliche Energie ohne Sugar-Crash. Ideal für Uni, Sport & Alltag.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🤝</div>
+      <h3>Fair Trade</h3>
+      <p>Direkt aus Afghanistan sourced. Traditionelles Rezept, fairer Preis. Echte Herkunft, echte Geschichte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUKT -->
+<section>
+  <div id="produkt">
+    <div class="produkt-gallery">
+      <div class="produkt-gallery-img tall reveal">
+        <img src="WhatsApp-Image-2026-03-07-at-17.32.20.jpg" alt="Talkan Snack Dreieck" />
+      </div>
+      <div class="produkt-gallery-img reveal">
+        <img src="WhatsApp-Image-2026-03-07-at-17.31.58.jpg" alt="Talkan Stücke Nahaufnahme" />
+      </div>
+      <div class="produkt-gallery-img reveal">
+        <img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" alt="Snackbox Verpackung" />
+      </div>
+    </div>
+    <div class="produkt-info reveal">
+      <span class="section-eyebrow">Das Produkt</span>
+      <h2>Traditionell.<br/>Neu gedacht.</h2>
+      <p>Talkan ist ein jahrhundertealter afghaner Superfood – handgepresst aus geröstetem Mehl, getrockneten Maulbeeren, Walnüssen und Mandeln. Kein Zuckerzusatz. Kein Schnickschnack.</p>
+      <div class="ingredients">
+        <span class="ing-tag">🍇 60% Maulbeeren</span>
+        <span class="ing-tag">🥜 Walnüsse</span>
+        <span class="ing-tag">🌰 Mandeln</span>
+        <span class="ing-tag">Vegan ✓</span>
+        <span class="ing-tag">Glutenfrei ✓</span>
+      </div>
+      <table class="nutrition-table">
+        <tr><th>Nährwerte</th><th>pro 100g</th></tr>
+        <tr><td>Energie</td><td>480 kcal</td></tr>
+        <tr><td>Fett</td><td>22g</td></tr>
+        <tr><td>Kohlenhydrate</td><td>52g</td></tr>
+        <tr><td>davon Zucker (nat.)</td><td>38g</td></tr>
+        <tr><td>Eiweiß</td><td>8g</td></tr>
+        <tr><td>Ballaststoffe</td><td>6g</td></tr>
+      </table>
+      <a href="#shop" class="btn-primary">In den Warenkorb – 9,99€</a>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGING -->
+<section id="packaging">
+  <div class="section-header">
+    <span class="section-eyebrow">Verpackung</span>
+    <h2 class="section-title">So gut wie der Inhalt.</h2>
+  </div>
+  <div class="pack-grid">
+    <div class="pack-card reveal">
+      <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" alt="Mulberry Boost Premium Box" />
+      <div class="pack-info">
+        <h3>Premium Kraft Box</h3>
+        <p>Großformatige Faltbox mit Logo-Druck, Sichtfenster & QR-Code. 100% Papier, kompostierbar. Premium-Feel beim Öffnen garantiert.</p>
+      </div>
+    </div>
+    <div class="pack-card reveal">
+      <img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" alt="Snackbox FSC Papier" />
+      <div class="pack-info">
+        <h3>Snack-Size Box · 0,28€/Stück</h3>
+        <p>FSC-zertifizierte Kraftpapier-Box 105×73×45mm. Ideal für Einzel-Portionen. Leicht individualisierbar mit eigenem Label.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <span class="section-eyebrow">Kundenstimmen</span>
+    <h2 class="section-title">Real Talk.</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Endlich ein Snack ohne Reue! Ich nehme ihn überall mit hin – Uni, Gym, unterwegs."</p>
+      <div class="reviewer">— ANNA, 22</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Besser als jeder Proteinriegel den ich kenne. Schmeckt nach mehr und macht wirklich satt."</p>
+      <div class="reviewer">— MAX, 19</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Die Verpackung alleine ist schon eine Story wert. Hab Fotos gemacht bevor ich ihn gegessen habe."</p>
+      <div class="reviewer">— LISA, 24</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Hab den ganzen Freundeskreis angesteckt. Jetzt kaufen wir immer den 3er-Pack."</p>
+      <div class="reviewer">— JONAS, 21</div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="section-header">
+    <span class="section-eyebrow">Shop</span>
+    <h2 class="section-title">Hol dir deinen Boost.</h2>
+  </div>
+  <div class="countdown">
+    🔥 Nur heute: -20% auf alles! Endet in <span id="timer">14:32</span>
+  </div>
+  <div class="price-cards">
+    <div class="price-card reveal">
+      <h3>Starter Pack</h3>
+      <div class="price-amount">9,99€</div>
+      <div class="price-sub">150g · +3,99€ Versand</div>
+    </div>
+    <div class="price-card featured reveal">
+      <h3>Bundle 3er Pack</h3>
+      <div class="price-amount">26,00€</div>
+      <div class="price-sub">450g · Versand kostenlos</div>
+      <div class="discount-badge">13% gespart ✓</div>
+    </div>
+  </div>
+  <button class="shop-cta" onclick="alert('Checkout: Stripe/PayPal hier integrieren!')">
+    🛒 In den Warenkorb
+  </button>
+  <div class="payment-icons">💳 Stripe · PayPal · Apple Pay · Klarna</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MULBERRY BOOST</div>
+  <p>
+    Premium Talkan Energy Snack aus Maulbeeren, Walnüssen & Mandeln.<br/>
+    🌿 100% Natürlich · ♻️ Zero Plastic · 🤝 Fair Trade aus Afghanistan<br/><br/>
+    <a href="mailto:hello@mulberryboost.me">hello@mulberryboost.me</a> ·
+    <a href="#">Impressum</a> · <a href="#">Datenschutz</a><br/><br/>
+    © 2026 Mulberry Boost. Made with ❤️ in Koblenz.
+  </p>
+</footer>
+
+<!-- STICKY BUTTONS -->
+<button class="sticky-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+  🛒 In den Warenkorb
+</button>
+<a href="https://wa.me/49YOURPHONE" class="whatsapp-btn" target="_blank">💬</a>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      btn.textContent = '🌙 Dark';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀️ Light';
+    }
+  }
+
+  // Countdown
+  let t = 14 * 60 + 32;
+  const el = document.getElementById('timer');
+  setInterval(() => {
+    if (t <= 0) t = 86400;
+    t--;
+    el.textContent = String(Math.floor(t/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0');
+  }, 1000);
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
