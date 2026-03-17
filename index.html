@@ -11,9 +11,6 @@
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://talkhansuperfood.me" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"Talkhan Superfood","url":"https://talkhansuperfood.me","description":"Eco-friendly natural energy snacks for young people worldwide"}
-  </script>
   <style>
     :root[data-theme="dark"] { --bg: #0e0e0e; --bg2: #141414; --text: #F5F0E8; --text2: #b0a898; --card: #1a1a1a; --border: #2a2a2a; --accent: #C9941A; }
     :root[data-theme="light"] { --bg: #FAF7F2; --bg2: #F0EBE1; --text: #1A1208; --text2: #5a4e3c; --card: #ffffff; --border: #e0d8cc; --accent: #C9941A; }
@@ -64,13 +61,61 @@
     .product-info { padding: 2rem; }
     .product-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
     .price { font-size: 2rem; color: var(--accent); font-weight: 900; }
-    .add-btn { width: 100%; background: var(--accent); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; }
+    .add-btn { width: 100%; background: var(--accent); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
 
     #features { background: var(--bg2); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
     .feature-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--glass); border-radius: 24px; }
 
     #packaging, #testimonials { background: var(--bg2); }
+
+    /* FLOATING QUICK BUY BUTTON */
+    #quick-buy-btn {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: var(--accent);
+      color: #0e0e0e;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 30px rgba(201,148,26,0.5);
+      z-index: 300;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    #quick-buy-btn:hover { transform: scale(1.1); }
+
+    /* QUICK BUY MODAL */
+    #quick-modal {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);
+      display: none; align-items: center; justify-content: center; z-index: 999;
+    }
+    .quick-content {
+      background: var(--card); width: 92%; max-width: 420px; border-radius: 24px;
+      padding: 2rem; max-height: 90vh; overflow-y: auto;
+    }
+
+    /* TOAST */
+    #toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #0e0e0e;
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(201,148,26,0.4);
+      z-index: 999;
+      display: none;
+      white-space: nowrap;
+    }
 
     .cart-modal {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);
@@ -81,7 +126,7 @@
       max-height: 90vh; overflow-y: auto; padding: 2rem;
     }
     .cart-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-    .cart-total { font-size: 1.5rem; text-align: right; margin: 1.5rem 0; }
+    .cart-total { font-size: 1.5rem; text-align: right; margin: 1.5rem 0; color: var(--accent); font-weight: 900; }
     .checkout-btn { background: #25D366; color: white; width: 100%; padding: 1.2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 700; }
 
     footer { background: #080808; padding: 5rem 5% 3rem; text-align: center; color: var(--text2); }
@@ -137,7 +182,6 @@
     <h2 class="section-title">Three ways to fuel your day</h2>
   </div>
   <div class="products-grid">
-    <!-- Product 1 -->
     <div class="product-card reveal">
       <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" alt="Starter Pack">
       <div class="product-info">
@@ -147,7 +191,6 @@
         <button onclick="addToCart(1)" class="add-btn">Add to Cart</button>
       </div>
     </div>
-    <!-- Product 2 -->
     <div class="product-card reveal">
       <img src="WhatsApp-Image-2026-03-07-at-17.32.20.jpg" alt="Boost Pack">
       <div class="product-info">
@@ -157,7 +200,6 @@
         <button onclick="addToCart(2)" class="add-btn">Add to Cart</button>
       </div>
     </div>
-    <!-- Product 3 -->
     <div class="product-card reveal">
       <img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" alt="Premium Bundle">
       <div class="product-info">
@@ -216,28 +258,37 @@
 <!-- LEGAL SECTIONS -->
 <section id="legal-notice" style="background:var(--bg);">
   <div class="section-header"><h2 class="section-title">Legal Notice (Impressum)</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);">
+  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px;">
+    <p><strong>Angaben gemäß § 5 TMG</strong></p>
     <p><strong>Talkhan Superfood</strong><br>
     [Your Full Name or Company Name]<br>
     [Your Street Address]<br>
-    [ZIP Code] Koblenz, Germany</p>
-    <p><strong>Contact:</strong> hello@talkhansuperfood.me • Phone: [Your Phone]</p>
-    <p><strong>VAT ID:</strong> [Your VAT-ID or “applied for”]</p>
+    [ZIP Code] Koblenz<br>
+    Germany</p>
+    <p><strong>Contact</strong><br>
+    E-Mail: hello@talkhansuperfood.me<br>
+    Phone: [Your Phone Number]</p>
+    <p><strong>VAT ID</strong><br>
+    Umsatzsteuer-Identifikationsnummer: [Your VAT-ID or “applied for”]</p>
+    <p><strong>Responsible for content</strong><br>
+    [Your Full Name]</p>
     <p>© 2026 Talkhan Superfood. All rights reserved.</p>
   </div>
 </section>
 
 <section id="privacy" style="background:var(--bg2);">
   <div class="section-header"><h2 class="section-title">Privacy Policy</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);">
-    <p>We only collect data needed to process your order (name, address, email). Payments are handled securely by PayPal. Your data is never sold. You can request deletion anytime at hello@talkhansuperfood.me.</p>
+  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px;">
+    <p>We only collect data needed to process your order. Payments are handled securely by PayPal. Your data is never sold.</p>
+    <p>Last updated: March 2026</p>
   </div>
 </section>
 
 <section id="terms" style="background:var(--bg);">
   <div class="section-header"><h2 class="section-title">Terms & Conditions (AGB)</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);">
-    <p>• All prices in EUR • Worldwide shipping • 30-day money-back guarantee • No returns on opened snack boxes for hygiene reasons • Disputes under German law • We reserve the right to cancel orders in case of abuse.</p>
+  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px;">
+    <p>Prices in EUR. 30-day money-back on unopened products. Payment via PayPal. Disputes under German law.</p>
+    <p>Last updated: March 2026</p>
   </div>
 </section>
 
@@ -246,12 +297,52 @@
   <p>Premium natural energy snacks • Plastic-free forever • Made for young people who care</p>
   <div class="footer-links" style="margin:2rem 0;">
     <a href="#legal-notice">Legal Notice</a>
-    <a href="#privacy">Privacy</a>
-    <a href="#terms">Terms</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms & Conditions (AGB)</a>
     <a href="mailto:hello@talkhansuperfood.me">Contact</a>
   </div>
   <p style="font-size:0.85rem;">© 2026 Talkhan Superfood • Ships worldwide with ❤️ from Germany</p>
 </footer>
+
+<!-- FLOATING QUICK BUY BUTTON -->
+<button id="quick-buy-btn" onclick="showQuickBuy()">⚡</button>
+
+<!-- QUICK BUY MODAL -->
+<div id="quick-modal">
+  <div class="quick-content">
+    <h3 style="margin-bottom:1.5rem;text-align:center;">Quick Buy <span onclick="hideQuickBuy()" style="float:right;cursor:pointer;font-size:1.8rem;">×</span></h3>
+    
+    <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);">
+      <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
+      <div style="flex:1;">
+        <strong>Starter Pack</strong><br>
+        <span style="color:var(--accent);">€9.99</span>
+      </div>
+      <button onclick="addToCart(1);hideQuickBuy()" style="background:var(--accent);color:#0e0e0e;padding:0.8rem 1.5rem;border-radius:999px;font-weight:700;">Add</button>
+    </div>
+
+    <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);">
+      <img src="WhatsApp-Image-2026-03-07-at-17.32.20.jpg" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
+      <div style="flex:1;">
+        <strong>Boost Pack</strong><br>
+        <span style="color:var(--accent);">€19.99</span>
+      </div>
+      <button onclick="addToCart(2);hideQuickBuy()" style="background:var(--accent);color:#0e0e0e;padding:0.8rem 1.5rem;border-radius:999px;font-weight:700;">Add</button>
+    </div>
+
+    <div style="display:flex;gap:1rem;align-items:center;">
+      <img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
+      <div style="flex:1;">
+        <strong>Premium Bundle</strong><br>
+        <span style="color:var(--accent);">€29.99</span>
+      </div>
+      <button onclick="addToCart(3);hideQuickBuy()" style="background:var(--accent);color:#0e0e0e;padding:0.8rem 1.5rem;border-radius:999px;font-weight:700;">Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">Added to cart ✓</div>
 
 <!-- CART MODAL -->
 <div id="cart-modal" class="cart-modal">
@@ -259,8 +350,8 @@
     <h3 style="margin-bottom:1.5rem;">Your Cart <span onclick="hideCart()" style="float:right;cursor:pointer;font-size:1.8rem;">×</span></h3>
     <div id="cart-items"></div>
     <div id="cart-total" class="cart-total">Total: €0.00</div>
-    <button onclick="checkoutWithPayPal()" class="checkout-btn">Checkout with PayPal</button>
-    <p style="text-align:center;margin-top:1rem;font-size:0.9rem;color:var(--text2);">Secure • Fast • Trusted</p>
+    <button onclick="checkoutWithPayPal()" class="checkout-btn">Pay with PayPal</button>
+    <p style="text-align:center;margin-top:1rem;font-size:0.9rem;color:var(--text2);">Secure • You will see your exact total on PayPal</p>
   </div>
 </div>
 
@@ -286,16 +377,19 @@
 
   function addToCart(id) {
     const product = products.find(p => p.id === id);
-    cart.push(product);
+    cart.push({...product});
     updateCartCount();
-    // Optional: small feedback
-    const btns = document.querySelectorAll('.add-btn');
-    for (let b of btns) { if (b.getAttribute('onclick').includes(id)) b.textContent = '✓ Added!'; }
-    setTimeout(() => { location.reload(); }, 800); // simple refresh for demo
+    showToast();
   }
 
   function updateCartCount() {
     document.getElementById('cart-count').textContent = cart.length;
+  }
+
+  function showToast() {
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2200);
   }
 
   function showCart() {
@@ -316,7 +410,7 @@
               <strong>${item.name}</strong><br>
               <span style="color:var(--accent);">€${item.price.toFixed(2)}</span>
             </div>
-            <button onclick="removeFromCart(${index})" style="background:none;border:none;color:red;cursor:pointer;">×</button>
+            <button onclick="removeFromCart(${index});" style="background:none;border:none;color:red;cursor:pointer;">×</button>
           </div>`;
       });
     }
@@ -327,7 +421,7 @@
   function removeFromCart(index) {
     cart.splice(index, 1);
     updateCartCount();
-    showCart(); // refresh modal
+    showCart();
   }
 
   function hideCart() {
@@ -336,13 +430,27 @@
 
   function checkoutWithPayPal() {
     if (cart.length === 0) return alert("Cart is empty!");
-    let total = cart.reduce((sum, item) => sum + item.price, 0);
+    
+    const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
     hideCart();
-    alert(`Total: €${total.toFixed(2)}\n\nRedirecting to PayPal...\n\n(Replace this alert with your real PayPal.me link or PayPal SDK in production)`);
-    // Example real link: window.open(`https://www.paypal.com/paypalme/YOURPAYPAL/${total.toFixed(2)}`);
-    // Clear cart after checkout in real site
+
+    const confirmed = confirm(`✅ Your exact total is €${total}\n\nClick OK to open PayPal.\n\nIMPORTANT: On the PayPal page, please enter exactly €${total} as the amount.\n\n(This is the only step you need to do manually – no guessing!)`);
+
+    if (confirmed) {
+      window.open("https://www.paypal.com/ncp/payment/3AHXTZRU673FU", "_blank");
+    }
+
+    // Clear cart after opening PayPal (customer will complete payment)
     cart = [];
     updateCartCount();
+  }
+
+  // Quick Buy Modal
+  function showQuickBuy() {
+    document.getElementById('quick-modal').style.display = 'flex';
+  }
+  function hideQuickBuy() {
+    document.getElementById('quick-modal').style.display = 'none';
   }
 
   // Reveal animation
