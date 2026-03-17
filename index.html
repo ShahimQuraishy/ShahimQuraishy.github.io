@@ -4,12 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Talkhan Superfood • Natural Energy Snack | Plastic-Free & Eco-Friendly</title>
-  <meta name="description" content="100% natural mulberry energy snacks for young people who want real taste, zero plastic, and eco-friendly vibes. Ships worldwide. Starter €9.99 • Boost €19.99 • Premium €29.99" />
-  <meta property="og:title" content="Talkhan Superfood – Natural Energy Snack" />
-  <meta property="og:description" content="Plastic-free, natural, and made for your busy life. Shop now and feel the boost!" />
-  <meta property="og:url" content="https://talkhansuperfood.me" />
-  <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://talkhansuperfood.me" />
+  <meta name="description" content="100% natural mulberry energy snacks for young people who want real taste, zero plastic, and eco-friendly vibes. Ships worldwide." />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root[data-theme="dark"] { --bg: #0e0e0e; --bg2: #141414; --text: #F5F0E8; --text2: #b0a898; --card: #1a1a1a; --border: #2a2a2a; --accent: #C9941A; }
@@ -27,10 +22,10 @@
       padding: 1rem 5%; background: rgba(14,14,14,0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(201,148,26,0.15);
     }
-    .nav-logo { font-size: 1.35rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+    .nav-logo { font-size: 1.35rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 900; }
     .nav-right { display: flex; gap: 1.5rem; align-items: center; }
     .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text); padding: 0.4rem 1rem; border-radius: 999px; cursor: pointer; }
-    .cart-icon { position: relative; font-size: 1.6rem; cursor: pointer; }
+    .cart-icon { position: relative; font-size: 1.6rem; cursor: pointer; background: none; border: none; color: var(--text); }
     .cart-count { position: absolute; top: -6px; right: -8px; background: #C9941A; color: #0e0e0e; font-size: 0.75rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
     #hero {
@@ -43,7 +38,7 @@
     .hero-sub { font-size: 1.35rem; color: var(--text2); margin: 1rem 0 1.5rem; }
     .hero-desc { max-width: 520px; color: var(--text2); font-size: 1.1rem; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-    .btn-primary { background: var(--accent); color: #0e0e0e; padding: 1rem 2.2rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(201,148,26,0.4); transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #0e0e0e; padding: 1rem 2.2rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(201,148,26,0.4); transition: all 0.2s; display: inline-block; }
     .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(201,148,26,0.6); }
     .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; }
     .stat-num { font-size: 2rem; color: var(--accent); font-weight: 900; }
@@ -52,92 +47,43 @@
 
     section { padding: 7rem 5%; }
     .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-title { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+    .section-title { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-top: 1rem; }
 
-    #products .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-    .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.3s; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+    .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.3s; position: relative; }
     .product-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    .product-card img { height: 280px; object-fit: cover; }
+    .product-card img { height: 280px; width: 100%; object-fit: cover; }
     .product-info { padding: 2rem; }
     .product-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
     .price { font-size: 2rem; color: var(--accent); font-weight: 900; }
-    .add-btn { width: 100%; background: var(--accent); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .add-btn { width: 100%; background: var(--accent); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; border: none; font-size: 1rem; }
+    
+    /* Nutrition Section */
+    .nutrition-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 800px; margin: 0 auto; text-align: center; }
+    .macros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+    .macro-item { background: var(--bg2); padding: 1.5rem; border-radius: 16px; }
+    .macro-val { font-size: 1.8rem; font-weight: 900; color: var(--accent); }
 
-    #features { background: var(--bg2); }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-    .feature-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--glass); border-radius: 24px; }
-
-    #packaging, #testimonials { background: var(--bg2); }
-
-    /* FLOATING QUICK BUY BUTTON */
-    #quick-buy-btn {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      background: var(--accent);
-      color: #0e0e0e;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 10px 30px rgba(201,148,26,0.5);
-      z-index: 300;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    #quick-buy-btn:hover { transform: scale(1.1); }
-
-    /* QUICK BUY MODAL */
-    #quick-modal {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);
-      display: none; align-items: center; justify-content: center; z-index: 999;
-    }
-    .quick-content {
-      background: var(--card); width: 92%; max-width: 420px; border-radius: 24px;
-      padding: 2rem; max-height: 90vh; overflow-y: auto;
-    }
-
-    /* TOAST */
-    #toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #0e0e0e;
-      padding: 1rem 2.5rem;
-      border-radius: 999px;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(201,148,26,0.4);
-      z-index: 999;
-      display: none;
-      white-space: nowrap;
-    }
-
-    .cart-modal {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);
-      display: none; align-items: center; justify-content: center; z-index: 999;
-    }
-    .cart-content {
-      background: var(--card); width: 92%; max-width: 480px; border-radius: 24px;
-      max-height: 90vh; overflow-y: auto; padding: 2rem;
-    }
-    .cart-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-    .cart-total { font-size: 1.5rem; text-align: right; margin: 1.5rem 0; color: var(--accent); font-weight: 900; }
-    .checkout-btn { background: #25D366; color: white; width: 100%; padding: 1.2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 700; }
+    /* Modals & Toasts */
+    #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #0e0e0e; padding: 1rem 2.5rem; border-radius: 999px; font-weight: 700; box-shadow: 0 10px 30px rgba(201,148,26,0.4); z-index: 999; display: none; }
+    .cart-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 999; }
+    .cart-content { background: var(--card); width: 92%; max-width: 480px; border-radius: 24px; max-height: 90vh; overflow-y: auto; padding: 2rem; }
+    .checkout-btn { background: #25D366; border: none; color: white; width: 100%; padding: 1.2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 1rem;}
 
     footer { background: #080808; padding: 5rem 5% 3rem; text-align: center; color: var(--text2); }
     .footer-links a { margin: 0 1rem; color: var(--accent); }
+    .social-links { margin-top: 1.5rem; }
+    .social-links a { color: var(--text); font-size: 1.5rem; margin: 0 0.5rem; }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s; }
     .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 768px) {
-      #hero { grid-template-columns: 1fr; padding-top: 7rem; }
-      .hero-stats { gap: 1.5rem; }
+      #hero { grid-template-columns: 1fr; padding-top: 7rem; text-align: center; }
+      .hero-desc { margin: 0 auto; }
+      .hero-btns { justify-content: center; }
+      .hero-stats { justify-content: center; gap: 1.5rem; }
+      .macros-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -153,7 +99,7 @@
 </nav>
 
 <div class="trust-bar">
-  🔒 Secure Payments • 🌍 Ships Worldwide • ♻️ 100% Plastic-Free • ⭐ Trusted by 200+ young people
+  🔒 Secure Payments • 🌍 Ships Worldwide • ♻️ 100% Plastic-Free • ⭐ Trusted by 200+ Athletes
 </div>
 
 <section id="hero">
@@ -167,98 +113,96 @@
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">100%</div><div>Natural</div></div>
-      <div><div class="stat-num">0</div><div>Added Sugar</div></div>
+      <div><div class="stat-num">0g</div><div>Added Sugar</div></div>
       <div><div class="stat-num">Zero</div><div>Plastic</div></div>
     </div>
   </div>
   <div>
-    <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" alt="Premium Talkhan Box" style="box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
+    <img src="talkhan-premium-box.jpg" alt="Premium Talkhan Box" style="box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
   </div>
 </section>
 
 <section id="products">
   <div class="section-header">
     <div class="hero-badge">CHOOSE YOUR BOOST</div>
-    <h2 class="section-title">Three ways to fuel your day</h2>
+    <h2 class="section-title">Fuel your day, your way</h2>
+    <p style="color:var(--text2); margin-top:1rem;">Free worldwide shipping on orders over €50!</p>
   </div>
+  
   <div class="products-grid">
     <div class="product-card reveal">
-      <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" alt="Starter Pack">
+      <img src="talkhan-starter-pack.jpg" alt="Starter Pack">
       <div class="product-info">
         <h3>Starter Pack</h3>
-        <p>150g • Perfect first taste</p>
+        <p style="color:var(--text2);">150g • Perfect first taste</p>
         <div class="price">€9.99</div>
         <button onclick="addToCart(1)" class="add-btn">Add to Cart</button>
       </div>
     </div>
     <div class="product-card reveal">
-      <img src="WhatsApp-Image-2026-03-07-at-17.32.20.jpg" alt="Boost Pack">
+      <img src="talkhan-boost-pack.jpg" alt="Boost Pack">
       <div class="product-info">
         <h3>Boost Pack</h3>
-        <p>300g • For busy days</p>
+        <p style="color:var(--text2);">300g • For busy days</p>
         <div class="price">€19.99</div>
         <button onclick="addToCart(2)" class="add-btn">Add to Cart</button>
       </div>
     </div>
     <div class="product-card reveal">
-      <img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" alt="Premium Bundle">
+      <img src="talkhan-premium-bundle.jpg" alt="Premium Bundle">
       <div class="product-info">
         <h3>Premium Bundle</h3>
-        <p>450g + 3 snack boxes • Gift-ready</p>
+        <p style="color:var(--text2);">450g + 3 boxes • Gift-ready</p>
         <div class="price">€29.99</div>
         <button onclick="addToCart(3)" class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card reveal" style="border-color: var(--accent);">
+      <div style="position:absolute; top:15px; right:15px; background:var(--accent); color:#0e0e0e; padding:5px 10px; border-radius:8px; font-weight:bold; font-size:0.8rem;">SHIPS FREE</div>
+      <img src="talkhan-ultimate-pack.jpg" alt="Ultimate Fuel Pack">
+      <div class="product-info">
+        <h3>Ultimate Fuel Pack</h3>
+        <p style="color:var(--text2);">750g • One month supply</p>
+        <div class="price">€50.00</div>
+        <button onclick="addToCart(4)" class="add-btn">Add to Cart</button>
       </div>
     </div>
   </div>
 </section>
 
-<section id="features">
+<section id="nutrition" style="background:var(--bg2);">
   <div class="section-header">
-    <h2 class="section-title">Why young people love Talkhan</h2>
+    <h2 class="section-title">Nothing to hide.</h2>
+    <p style="color:var(--text2); max-width:600px; margin:1rem auto 0;">Just three powerful ingredients: Hand-pressed mulberries, walnuts, and almonds. Designed to give you sustained energy without the sugar crash.</p>
   </div>
-  <div class="features-grid">
-    <div class="feature-card reveal"><h3>🌿 Tastes Amazing</h3><p>Natural mulberries + walnuts + almonds. No weird aftertaste.</p></div>
-    <div class="feature-card reveal"><h3>⚡ Real Energy</h3><p>Sustained fuel for uni, gym, gaming or late-night study sessions.</p></div>
-    <div class="feature-card reveal"><h3>♻️ Zero Plastic</h3><p>Compostable kraft-paper boxes. Looks Instagram-worthy too.</p></div>
-    <div class="feature-card reveal"><h3>🌍 Ships Everywhere</h3><p>Fast delivery to 50+ countries. Free shipping on orders over €50.</p></div>
-  </div>
-</section>
-
-<section id="packaging">
-  <div class="section-header"><h2 class="section-title">Packaging that feels premium</h2></div>
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
-    <div class="product-card"><img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" alt=""><div style="padding:1.5rem;text-align:center;"><strong>Premium Gift Box</strong><br>Big, beautiful, compostable</div></div>
-    <div class="product-card"><img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" alt=""><div style="padding:1.5rem;text-align:center;"><strong>Snack-Size Boxes</strong><br>Perfect for your bag or locker</div></div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="section-header"><h2 class="section-title">Real vibes from real people</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1100px;margin:0 auto;">
-    <div class="review-card" style="background:var(--card);padding:2rem;border-radius:24px;border:1px solid var(--border);">
-      <p style="font-style:italic;">"Tastes way better than any protein bar and keeps me full for hours. Love the packaging!"</p>
-      <p style="margin-top:1rem;font-weight:700;color:var(--accent);">— Sarah, 21 • Student</p>
+  <div class="nutrition-box reveal">
+    <h3>Nutritional Value (per 100g)</h3>
+    <div class="macros-grid">
+      <div class="macro-item">
+        <div class="macro-val">340</div>
+        <div>Calories</div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-val">9g</div>
+        <div>Protein</div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-val">65g</div>
+        <div>Carbs</div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-val">5g</div>
+        <div>Fat</div>
+      </div>
     </div>
-    <div class="review-card" style="background:var(--card);padding:2rem;border-radius:24px;border:1px solid var(--border);">
-      <p style="font-style:italic;">"The eco vibe is real. No plastic guilt and it actually gives me energy for workouts."</p>
-      <p style="margin-top:1rem;font-weight:700;color:var(--accent);">— Liam, 19 • Gym guy</p>
-    </div>
+    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text2);">*Naturally occurring sugars from mulberries. Zero artificial syrups.</p>
   </div>
 </section>
 
-<section id="faq" style="background:var(--bg2);">
-  <div class="section-header"><h2 class="section-title">Quick questions</h2></div>
-  <div style="max-width:700px;margin:0 auto;">
-    <details style="margin-bottom:1.5rem;background:var(--card);padding:1.5rem;border-radius:16px;"><summary style="font-weight:600;cursor:pointer;">Is it really plastic-free?</summary><p style="margin-top:1rem;color:var(--text2);">Yes – every box is 100% compostable kraft paper with a clear window.</p></details>
-    <details style="margin-bottom:1.5rem;background:var(--card);padding:1.5rem;border-radius:16px;"><summary style="font-weight:600;cursor:pointer;">Do you ship worldwide?</summary><p style="margin-top:1rem;color:var(--text2);">Yes! We ship to over 50 countries. Delivery times 5–14 days.</p></details>
-    <details style="margin-bottom:1.5rem;background:var(--card);padding:1.5rem;border-radius:16px;"><summary style="font-weight:600;cursor:pointer;">Is it safe for everyone?</summary><p style="margin-top:1rem;color:var(--text2);">100% natural, vegan, gluten-free, no added sugar. Safe & delicious.</p></details>
-  </div>
-</section>
-
-<!-- LEGAL SECTIONS -->
 <section id="legal-notice" style="background:var(--bg);">
   <div class="section-header"><h2 class="section-title">Legal Notice (Impressum)</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px;">
+  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px; border: 2px dashed red;">
+    <p style="color: red; font-weight: bold; text-align:center;">⚠️ ACTION REQUIRED: Fill in your legal details below before launch!</p>
     <p><strong>Angaben gemäß § 5 TMG</strong></p>
     <p><strong>Talkhan Superfood</strong><br>
     [Your Full Name or Company Name]<br>
@@ -270,31 +214,18 @@
     Phone: [Your Phone Number]</p>
     <p><strong>VAT ID</strong><br>
     Umsatzsteuer-Identifikationsnummer: [Your VAT-ID or “applied for”]</p>
-    <p><strong>Responsible for content</strong><br>
-    [Your Full Name]</p>
-    <p>© 2026 Talkhan Superfood. All rights reserved.</p>
-  </div>
-</section>
-
-<section id="privacy" style="background:var(--bg2);">
-  <div class="section-header"><h2 class="section-title">Privacy Policy</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px;">
-    <p>We only collect data needed to process your order. Payments are handled securely by PayPal. Your data is never sold.</p>
-    <p>Last updated: March 2026</p>
-  </div>
-</section>
-
-<section id="terms" style="background:var(--bg);">
-  <div class="section-header"><h2 class="section-title">Terms & Conditions (AGB)</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px;">
-    <p>Prices in EUR. 30-day money-back on unopened products. Payment via PayPal. Disputes under German law.</p>
-    <p>Last updated: March 2026</p>
   </div>
 </section>
 
 <footer>
   <div class="nav-logo" style="font-size:2rem;margin-bottom:1rem;">TALKHAN</div>
   <p>Premium natural energy snacks • Plastic-free forever • Made for young people who care</p>
+  
+  <div class="social-links">
+    <a href="#" target="_blank" title="Instagram">📸 Instagram</a>
+    <a href="#" target="_blank" title="TikTok">🎵 TikTok</a>
+  </div>
+
   <div class="footer-links" style="margin:2rem 0;">
     <a href="#legal-notice">Legal Notice</a>
     <a href="#privacy">Privacy Policy</a>
@@ -304,59 +235,22 @@
   <p style="font-size:0.85rem;">© 2026 Talkhan Superfood • Ships worldwide with ❤️ from Germany</p>
 </footer>
 
-<!-- FLOATING QUICK BUY BUTTON -->
-<button id="quick-buy-btn" onclick="showQuickBuy()">⚡</button>
-
-<!-- QUICK BUY MODAL -->
-<div id="quick-modal">
-  <div class="quick-content">
-    <h3 style="margin-bottom:1.5rem;text-align:center;">Quick Buy <span onclick="hideQuickBuy()" style="float:right;cursor:pointer;font-size:1.8rem;">×</span></h3>
-    
-    <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);">
-      <img src="WhatsApp-Image-2026-03-07-at-17.33.20.jpg" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
-      <div style="flex:1;">
-        <strong>Starter Pack</strong><br>
-        <span style="color:var(--accent);">€9.99</span>
-      </div>
-      <button onclick="addToCart(1);hideQuickBuy()" style="background:var(--accent);color:#0e0e0e;padding:0.8rem 1.5rem;border-radius:999px;font-weight:700;">Add</button>
-    </div>
-
-    <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);">
-      <img src="WhatsApp-Image-2026-03-07-at-17.32.20.jpg" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
-      <div style="flex:1;">
-        <strong>Boost Pack</strong><br>
-        <span style="color:var(--accent);">€19.99</span>
-      </div>
-      <button onclick="addToCart(2);hideQuickBuy()" style="background:var(--accent);color:#0e0e0e;padding:0.8rem 1.5rem;border-radius:999px;font-weight:700;">Add</button>
-    </div>
-
-    <div style="display:flex;gap:1rem;align-items:center;">
-      <img src="WhatsApp-Image-2026-03-07-at-17.32.31.jpg" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
-      <div style="flex:1;">
-        <strong>Premium Bundle</strong><br>
-        <span style="color:var(--accent);">€29.99</span>
-      </div>
-      <button onclick="addToCart(3);hideQuickBuy()" style="background:var(--accent);color:#0e0e0e;padding:0.8rem 1.5rem;border-radius:999px;font-weight:700;">Add</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOAST -->
 <div id="toast">Added to cart ✓</div>
 
-<!-- CART MODAL -->
 <div id="cart-modal" class="cart-modal">
   <div class="cart-content">
-    <h3 style="margin-bottom:1.5rem;">Your Cart <span onclick="hideCart()" style="float:right;cursor:pointer;font-size:1.8rem;">×</span></h3>
+    <h3 style="margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+      Your Cart 
+      <span onclick="hideCart()" style="cursor:pointer;font-size:1.8rem;">×</span>
+    </h3>
     <div id="cart-items"></div>
-    <div id="cart-total" class="cart-total">Total: €0.00</div>
+    <div id="cart-total" style="font-size: 1.5rem; text-align: right; margin: 1.5rem 0; color: var(--accent); font-weight: 900;">Total: €0.00</div>
     <button onclick="checkoutWithPayPal()" class="checkout-btn">Pay with PayPal</button>
     <p style="text-align:center;margin-top:1rem;font-size:0.9rem;color:var(--text2);">Secure • You will see your exact total on PayPal</p>
   </div>
 </div>
 
 <script>
-  // Theme toggle
   function toggleTheme() {
     const html = document.documentElement;
     const btn = document.querySelector('.theme-toggle');
@@ -367,12 +261,12 @@
     }
   }
 
-  // Shopping Cart
   let cart = [];
   const products = [
-    { id: 1, name: "Starter Pack", price: 9.99, img: "WhatsApp-Image-2026-03-07-at-17.33.20.jpg" },
-    { id: 2, name: "Boost Pack", price: 19.99, img: "WhatsApp-Image-2026-03-07-at-17.32.20.jpg" },
-    { id: 3, name: "Premium Bundle", price: 29.99, img: "WhatsApp-Image-2026-03-07-at-17.32.31.jpg" }
+    { id: 1, name: "Starter Pack", price: 9.99, img: "talkhan-starter-pack.jpg" },
+    { id: 2, name: "Boost Pack", price: 19.99, img: "talkhan-boost-pack.jpg" },
+    { id: 3, name: "Premium Bundle", price: 29.99, img: "talkhan-premium-bundle.jpg" },
+    { id: 4, name: "Ultimate Fuel Pack", price: 50.00, img: "talkhan-ultimate-pack.jpg" } // New Product Added here!
   ];
 
   function addToCart(id) {
@@ -404,17 +298,21 @@
       cart.forEach((item, index) => {
         total += item.price;
         itemsDiv.innerHTML += `
-          <div style="display:flex;gap:1rem;margin-bottom:1rem;">
-            <img src="${item.img}" style="width:80px;height:80px;object-fit:cover;border-radius:12px;">
+          <div style="display:flex;gap:1rem;margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border);">
+            <img src="${item.img}" style="width:70px;height:70px;object-fit:cover;border-radius:12px;">
             <div style="flex:1;">
               <strong>${item.name}</strong><br>
               <span style="color:var(--accent);">€${item.price.toFixed(2)}</span>
             </div>
-            <button onclick="removeFromCart(${index});" style="background:none;border:none;color:red;cursor:pointer;">×</button>
+            <button onclick="removeFromCart(${index});" style="background:none;border:none;color:#ff4444;font-size:1.5rem;cursor:pointer;">×</button>
           </div>`;
       });
     }
-    document.getElementById('cart-total').innerHTML = `Total: €${total.toFixed(2)}`;
+    
+    // Check for free shipping logic
+    let shippingText = total >= 50 ? "<br><span style='font-size:1rem; color:#25D366;'>+ FREE Shipping 🌍</span>" : `<br><span style='font-size:1rem; color:var(--text2);'>Add €${(50 - total).toFixed(2)} more for FREE shipping</span>`;
+    
+    document.getElementById('cart-total').innerHTML = `Total: €${total.toFixed(2)} ${total > 0 ? shippingText : ''}`;
     modal.style.display = 'flex';
   }
 
@@ -430,36 +328,21 @@
 
   function checkoutWithPayPal() {
     if (cart.length === 0) return alert("Cart is empty!");
-    
     const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
     hideCart();
-
-    const confirmed = confirm(`✅ Your exact total is €${total}\n\nClick OK to open PayPal.\n\nIMPORTANT: On the PayPal page, please enter exactly €${total} as the amount.\n\n(This is the only step you need to do manually – no guessing!)`);
-
+    const confirmed = confirm(`✅ Your exact total is €${total}\n\nClick OK to open PayPal.\n\nIMPORTANT: On the PayPal page, please enter exactly €${total} as the amount.`);
     if (confirmed) {
       window.open("https://www.paypal.com/ncp/payment/3AHXTZRU673FU", "_blank");
+      cart = [];
+      updateCartCount();
     }
-
-    // Clear cart after opening PayPal (customer will complete payment)
-    cart = [];
-    updateCartCount();
   }
 
-  // Quick Buy Modal
-  function showQuickBuy() {
-    document.getElementById('quick-modal').style.display = 'flex';
-  }
-  function hideQuickBuy() {
-    document.getElementById('quick-modal').style.display = 'none';
-  }
-
-  // Reveal animation
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Init
   updateCartCount();
 </script>
 </body>
