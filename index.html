@@ -181,6 +181,48 @@
     #back-to-top.show { display: flex; }
     #back-to-top:hover { transform: scale(1.15) translateY(-2px); }
 
+    /* ── FLOATING QUICK BUY ── */
+    #qb-fab-wrap { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 300; }
+    #qb-fab-tab {
+      display: block; background: linear-gradient(180deg, var(--accent), var(--accent2));
+      color: #0e0e0e; padding: 1.1rem 0.7rem; border-radius: 12px 0 0 12px;
+      cursor: pointer; writing-mode: vertical-rl; transform: rotate(180deg);
+      font-weight: 900; font-family: "Montserrat", sans-serif; font-size: 0.85rem;
+      letter-spacing: 1px; box-shadow: -4px 0 20px rgba(201,148,26,0.35);
+      transition: box-shadow 0.25s, padding 0.2s; user-select: none; border: none; white-space: nowrap;
+    }
+    #qb-fab-tab:hover { box-shadow: -6px 0 28px rgba(201,148,26,0.55); padding-top: 1.35rem; padding-bottom: 1.35rem; }
+    #qb-panel {
+      position: fixed; right: -360px; top: 50%; transform: translateY(-50%);
+      z-index: 300; width: 300px; max-height: 85vh; overflow-y: auto;
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px 0 0 20px;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.4);
+      transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #qb-panel.open { right: 0; }
+    .qb-panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border);
+      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 1rem;
+    }
+    .qb-close { background: none; border: none; color: var(--text); font-size: 1.8rem; cursor: pointer; line-height: 1; padding: 0; transition: color 0.2s; }
+    .qb-close:hover { color: var(--accent); }
+    .qb-panel-body { padding: 0.75rem 1.4rem 1.4rem; }
+    .qb-item { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+    .qb-item:last-child { border-bottom: none; }
+    .qb-item-info strong { display: block; font-size: 0.9rem; margin-bottom: 0.15rem; }
+    .qb-item-info span { font-size: 0.82rem; color: var(--accent); font-weight: 700; }
+    .qb-item-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0e0e0e;
+      border: none; padding: 0.45rem 0.9rem; border-radius: 999px; font-weight: 700;
+      font-size: 0.82rem; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.2s;
+    }
+    .qb-item-btn:hover { transform: scale(1.07); box-shadow: 0 4px 14px rgba(201,148,26,0.45); }
+    @media (max-width: 480px) {
+      #qb-fab-wrap { top: auto; bottom: 90px; transform: none; }
+      #qb-panel { top: auto; bottom: 0; transform: none; max-height: 72vh; border-radius: 20px 0 0 0; width: 280px; right: -280px; }
+    }
+
     @media (max-width: 768px) {
       #hero { grid-template-columns: 1fr; padding-top: 7rem; text-align: center; }
       .hero-desc { margin: 0 auto; }
@@ -510,6 +552,36 @@
   </div>
 </div>
 
+<!-- ── FLOATING QUICK BUY ── -->
+<div id="qb-fab-wrap">
+  <button id="qb-fab-tab" onclick="toggleQBPanel()" aria-label="Open Quick Buy panel" aria-expanded="false" aria-controls="qb-panel">⚡ Quick Buy</button>
+</div>
+
+<div id="qb-panel" role="dialog" aria-label="Quick Buy" aria-hidden="true">
+  <div class="qb-panel-header">
+    <span>⚡ Quick Buy</span>
+    <button class="qb-close" onclick="toggleQBPanel()" aria-label="Close Quick Buy">×</button>
+  </div>
+  <div class="qb-panel-body">
+    <div class="qb-item">
+      <div class="qb-item-info"><strong>Starter Pack</strong><span>150g — €9.99</span></div>
+      <button class="qb-item-btn" onclick="quickBuy(1)">⚡ Buy</button>
+    </div>
+    <div class="qb-item">
+      <div class="qb-item-info"><strong>Boost Pack</strong><span>300g — €19.99</span></div>
+      <button class="qb-item-btn" onclick="quickBuy(2)">⚡ Buy</button>
+    </div>
+    <div class="qb-item">
+      <div class="qb-item-info"><strong>Premium Bundle</strong><span>450g — €29.99</span></div>
+      <button class="qb-item-btn" onclick="quickBuy(3)">⚡ Buy</button>
+    </div>
+    <div class="qb-item">
+      <div class="qb-item-info"><strong>Ultimate Fuel Pack</strong><span>750g — €50.00 🚚</span></div>
+      <button class="qb-item-btn" onclick="quickBuy(4)">⚡ Buy</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // ── THEME ──
   function toggleTheme() {
@@ -652,6 +724,27 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       ['privacy', 'terms', 'legal'].forEach(name => closeModal(name));
+      const panel = document.getElementById('qb-panel');
+      if (panel && panel.classList.contains('open')) toggleQBPanel();
+    }
+  });
+
+  // ── FLOATING QUICK BUY ──
+  function toggleQBPanel() {
+    const panel = document.getElementById('qb-panel');
+    const tab = document.getElementById('qb-fab-tab');
+    const isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open');
+    panel.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+    tab.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('qb-panel');
+    const wrap = document.getElementById('qb-fab-wrap');
+    if (panel && panel.classList.contains('open') &&
+        !panel.contains(e.target) && !wrap.contains(e.target)) {
+      toggleQBPanel();
     }
   });
 
