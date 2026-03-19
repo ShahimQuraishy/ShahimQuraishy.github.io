@@ -7,76 +7,166 @@
   <meta name="description" content="100% natural mulberry energy snacks for young people who want real taste, zero plastic, and eco-friendly vibes. Ships worldwide." />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root[data-theme="dark"] { --bg: #0e0e0e; --bg2: #141414; --text: #F5F0E8; --text2: #b0a898; --card: #1a1a1a; --border: #2a2a2a; --accent: #C9941A; }
-    :root[data-theme="light"] { --bg: #FAF7F2; --bg2: #F0EBE1; --text: #1A1208; --text2: #5a4e3c; --card: #ffffff; --border: #e0d8cc; --accent: #C9941A; }
+    :root[data-theme="dark"] { --bg: #0e0e0e; --bg2: #141414; --text: #F5F0E8; --text2: #b0a898; --card: #1a1a1a; --border: #2a2a2a; --accent: #C9941A; --accent2: #f0b432; }
+    :root[data-theme="light"] { --bg: #FAF7F2; --bg2: #F0EBE1; --text: #1A1208; --text2: #5a4e3c; --card: #ffffff; --border: #e0d8cc; --accent: #C9941A; --accent2: #e08010; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.6; }
+    body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
     h1,h2,h3 { font-family: "Montserrat", sans-serif; font-weight: 900; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; border-radius: 16px; }
 
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 5%; background: rgba(14,14,14,0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(201,148,26,0.15);
+      transition: box-shadow 0.3s;
     }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(201,148,26,0.12); }
     .nav-logo { font-size: 1.35rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 900; }
     .nav-right { display: flex; gap: 1.5rem; align-items: center; }
-    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text); padding: 0.4rem 1rem; border-radius: 999px; cursor: pointer; }
-    .cart-icon { position: relative; font-size: 1.6rem; cursor: pointer; background: none; border: none; color: var(--text); }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text); padding: 0.4rem 1rem; border-radius: 999px; cursor: pointer; transition: border-color 0.2s; }
+    .theme-toggle:hover { border-color: var(--accent); }
+    .cart-icon { position: relative; font-size: 1.6rem; cursor: pointer; background: none; border: none; color: var(--text); transition: transform 0.2s; }
+    .cart-icon:hover { transform: scale(1.15); }
     .cart-count { position: absolute; top: -6px; right: -8px; background: #C9941A; color: #0e0e0e; font-size: 0.75rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
+    /* ── HERO ── */
     #hero {
       min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center;
       gap: 4rem; padding: 9rem 5% 4rem;
-      background: radial-gradient(ellipse at 70% 50%, rgba(30,58,15,0.6) 0%, transparent 70%), var(--bg);
+      background: radial-gradient(ellipse at 70% 50%, rgba(30,58,15,0.6) 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, rgba(201,148,26,0.08) 0%, transparent 60%),
+                  var(--bg);
+      position: relative; overflow: hidden;
     }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(201,148,26,0.1); color: var(--accent); padding: 0.5rem 1.2rem; border-radius: 999px; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; }
+    #hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(201,148,26,0.02) 80px, rgba(201,148,26,0.02) 81px),
+                  repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(201,148,26,0.02) 80px, rgba(201,148,26,0.02) 81px);
+    }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(201,148,26,0.1); color: var(--accent); padding: 0.5rem 1.2rem; border-radius: 999px; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; border: 1px solid rgba(201,148,26,0.25); }
     #hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -2px; }
+    .hero-highlight { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-sub { font-size: 1.35rem; color: var(--text2); margin: 1rem 0 1.5rem; }
     .hero-desc { max-width: 520px; color: var(--text2); font-size: 1.1rem; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-    .btn-primary { background: var(--accent); color: #0e0e0e; padding: 1rem 2.2rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(201,148,26,0.4); transition: all 0.2s; display: inline-block; }
-    .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(201,148,26,0.6); }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0e0e0e; padding: 1rem 2.2rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(201,148,26,0.4); transition: all 0.25s; display: inline-block; border: none; cursor: pointer; }
+    .btn-primary:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 16px 48px rgba(201,148,26,0.6); }
+    .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 0.95rem 2rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; transition: all 0.25s; display: inline-block; cursor: pointer; }
+    .btn-outline:hover { background: var(--accent); color: #0e0e0e; transform: translateY(-4px); }
     .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; }
     .stat-num { font-size: 2rem; color: var(--accent); font-weight: 900; }
+    .hero-img-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
+    .hero-img-wrap::after {
+      content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,148,26,0.18) 0%, transparent 70%);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow { 0%,100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 1; } }
 
-    .trust-bar { background: #1E3A0F; color: #7ab84e; padding: 0.8rem; text-align: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; }
+    /* ── TRUST BAR ── */
+    .trust-bar { background: linear-gradient(90deg, #1E3A0F, #2a5018, #1E3A0F); color: #7ab84e; padding: 0.8rem; text-align: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; overflow: hidden; }
+    .trust-bar-inner { display: inline-flex; gap: 3rem; white-space: nowrap; animation: marquee 20s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+    /* ── FEATURES ── */
+    #features { padding: 5rem 5%; background: var(--bg2); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; cursor: default; }
+    .feature-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(201,148,26,0.15); }
+    .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.9rem; color: var(--text2); }
+
+    /* ── SECTIONS ── */
     section { padding: 7rem 5%; }
     .section-header { text-align: center; margin-bottom: 4rem; }
     .section-title { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-top: 1rem; }
 
+    /* ── PRODUCTS ── */
     .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-    .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.3s; position: relative; }
-    .product-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    .product-card img { height: 280px; width: 100%; object-fit: cover; }
+    .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.35s; position: relative; }
+    .product-card:hover { transform: translateY(-12px); box-shadow: 0 24px 60px rgba(0,0,0,0.35); border-color: rgba(201,148,26,0.3); }
+    .product-card img { height: 280px; width: 100%; object-fit: cover; transition: transform 0.4s; }
+    .product-card:hover img { transform: scale(1.05); }
     .product-info { padding: 2rem; }
     .product-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
     .price { font-size: 2rem; color: var(--accent); font-weight: 900; }
-    .add-btn { width: 100%; background: var(--accent); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; border: none; font-size: 1rem; }
-    
-    /* Nutrition Section */
+    .add-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.25s; border: none; font-size: 1rem; }
+    .add-btn:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
+
+    /* ── NUTRITION ── */
     .nutrition-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 800px; margin: 0 auto; text-align: center; }
     .macros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
-    .macro-item { background: var(--bg2); padding: 1.5rem; border-radius: 16px; }
+    .macro-item { background: var(--bg2); padding: 1.5rem; border-radius: 16px; transition: all 0.3s; cursor: default; }
+    .macro-item:hover { background: rgba(201,148,26,0.1); transform: scale(1.05); }
     .macro-val { font-size: 1.8rem; font-weight: 900; color: var(--accent); }
 
-    /* Modals & Toasts */
-    #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #0e0e0e; padding: 1rem 2.5rem; border-radius: 999px; font-weight: 700; box-shadow: 0 10px 30px rgba(201,148,26,0.4); z-index: 999; display: none; }
-    .cart-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 999; }
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--bg); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+    .testimonial-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); border-color: rgba(201,148,26,0.25); }
+    .testimonial-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem; }
+    .testimonial-text { font-size: 1rem; color: var(--text2); font-style: italic; margin-bottom: 1.2rem; }
+    .testimonial-author { font-weight: 700; font-size: 0.95rem; }
+
+    /* ── PRIVACY POLICY SECTION ── */
+    #privacy { background: var(--bg2); }
+    .privacy-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 900px; margin: 0 auto; line-height: 1.9; color: var(--text2); font-size: 0.95rem; }
+    .privacy-box h3 { color: var(--text); margin: 1.5rem 0 0.5rem; font-size: 1.15rem; }
+    .privacy-box h3:first-child { margin-top: 0; }
+    .privacy-box p { margin-bottom: 0.8rem; }
+
+    /* ── MODALS & TOASTS ── */
+    #toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px); background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0e0e0e; padding: 1rem 2.5rem; border-radius: 999px; font-weight: 700; box-shadow: 0 10px 30px rgba(201,148,26,0.4); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s, transform 0.3s; }
+    #toast.show { display: block; opacity: 1; transform: translateX(-50%) translateY(0); }
+    .cart-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 999; backdrop-filter: blur(4px); }
     .cart-content { background: var(--card); width: 92%; max-width: 480px; border-radius: 24px; max-height: 90vh; overflow-y: auto; padding: 2rem; }
-    .checkout-btn { background: #25D366; border: none; color: white; width: 100%; padding: 1.2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 1rem;}
+    .checkout-btn { background: linear-gradient(135deg, #25D366, #1aaa4f); border: none; color: white; width: 100%; padding: 1.2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 1rem; transition: all 0.25s; }
+    .checkout-btn:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
 
+    /* ── PRIVACY CONSENT POPUP ── */
+    #privacy-popup {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: var(--card); border-top: 2px solid var(--accent);
+      padding: 1.5rem 5%;
+      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #privacy-popup.visible { transform: translateY(0); }
+    .privacy-popup-text { flex: 1; min-width: 240px; font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
+    .privacy-popup-text strong { color: var(--text); }
+    .privacy-popup-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .btn-accept { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0e0e0e; border: none; padding: 0.75rem 1.8rem; border-radius: 999px; font-weight: 700; cursor: pointer; font-size: 0.95rem; transition: all 0.2s; }
+    .btn-accept:hover { transform: scale(1.05); }
+    .btn-decline { background: transparent; border: 1px solid var(--border); color: var(--text2); padding: 0.75rem 1.4rem; border-radius: 999px; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+    .btn-decline:hover { border-color: var(--accent); color: var(--accent); }
+    .privacy-popup-link { color: var(--accent); text-decoration: underline; cursor: pointer; }
+
+    /* ── FOOTER ── */
     footer { background: #080808; padding: 5rem 5% 3rem; text-align: center; color: var(--text2); }
-    .footer-links a { margin: 0 1rem; color: var(--accent); }
+    .footer-links a { margin: 0 1rem; color: var(--accent); transition: opacity 0.2s; }
+    .footer-links a:hover { opacity: 0.8; }
     .social-links { margin-top: 1.5rem; }
-    .social-links a { color: var(--text); font-size: 1.5rem; margin: 0 0.5rem; }
+    .social-links a { color: var(--text); font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.2s, transform 0.2s; display: inline-block; }
+    .social-links a:hover { color: var(--accent); transform: scale(1.1); }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s; }
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+
+    /* ── BACK TO TOP ── */
+    #back-to-top { position: fixed; bottom: 30px; right: 25px; background: var(--accent); color: #0e0e0e; border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 500; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,148,26,0.4); transition: all 0.25s; }
+    #back-to-top.show { display: flex; }
+    #back-to-top:hover { transform: scale(1.15) translateY(-2px); }
 
     @media (max-width: 768px) {
       #hero { grid-template-columns: 1fr; padding-top: 7rem; text-align: center; }
@@ -84,10 +174,24 @@
       .hero-btns { justify-content: center; }
       .hero-stats { justify-content: center; gap: 1.5rem; }
       .macros-grid { grid-template-columns: repeat(2, 1fr); }
+      #privacy-popup { flex-direction: column; align-items: flex-start; gap: 1rem; }
     }
   </style>
 </head>
 <body>
+
+<!-- ── PRIVACY CONSENT POPUP ── -->
+<div id="privacy-popup" role="dialog" aria-labelledby="privacy-popup-title" aria-modal="true">
+  <div class="privacy-popup-text">
+    <strong id="privacy-popup-title">🍃 We respect your privacy.</strong><br>
+    This website uses only essential cookies to keep your cart working. We do not track you or share your data with third parties.
+    By clicking <strong>Accept</strong> you agree to our <span class="privacy-popup-link" onclick="scrollToPrivacy()">Privacy Policy</span>.
+  </div>
+  <div class="privacy-popup-actions">
+    <button class="btn-accept" onclick="acceptPrivacy()">Accept</button>
+    <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
+  </div>
+</div>
 
 <nav>
   <div class="nav-logo">TALKHAN</div>
@@ -99,36 +203,68 @@
 </nav>
 
 <div class="trust-bar">
-  🔒 Secure Payments • 🌍 Ships Worldwide • ♻️ 100% Plastic-Free • ⭐ Trusted by 200+ Athletes
+  <div class="trust-bar-inner">
+    🔒 Secure Payments &nbsp;•&nbsp; 🌍 Ships Worldwide &nbsp;•&nbsp; ♻️ 100% Plastic-Free &nbsp;•&nbsp; ⭐ Trusted by 200+ Athletes &nbsp;•&nbsp;
+    🔒 Secure Payments &nbsp;•&nbsp; 🌍 Ships Worldwide &nbsp;•&nbsp; ♻️ 100% Plastic-Free &nbsp;•&nbsp; ⭐ Trusted by 200+ Athletes
+  </div>
 </div>
 
+<!-- ── HERO ── -->
 <section id="hero">
   <div>
-    <div class="hero-badge">✦ NATURAL • ECO • FOR YOU</div>
-    <h1>Talkhan Superfood</h1>
-    <p class="hero-sub">Real taste. Zero plastic. Pure energy.</p>
-    <p class="hero-desc">Hand-pressed mulberry energy snacks made for students, athletes & anyone who wants natural fuel without the crash. Eco-friendly packaging that actually looks cool.</p>
-    <div class="hero-btns">
+    <div class="hero-badge reveal-left">✦ NATURAL • ECO • FOR YOU</div>
+    <h1 class="reveal-left" style="transition-delay:0.1s;">Talkhan<br><span class="hero-highlight">Superfood</span></h1>
+    <p class="hero-sub reveal-left" style="transition-delay:0.2s;">Real taste. Zero plastic. Pure energy.</p>
+    <p class="hero-desc reveal-left" style="transition-delay:0.3s;">Hand-pressed mulberry energy snacks made for students, athletes &amp; anyone who wants natural fuel without the crash. Eco-friendly packaging that actually looks cool.</p>
+    <div class="hero-btns reveal-left" style="transition-delay:0.4s;">
       <a href="#products" class="btn-primary">Shop Now – from €9.99</a>
+      <a href="#nutrition" class="btn-outline">Learn More</a>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats reveal-left" style="transition-delay:0.5s;">
       <div><div class="stat-num">100%</div><div>Natural</div></div>
       <div><div class="stat-num">0g</div><div>Added Sugar</div></div>
       <div><div class="stat-num">Zero</div><div>Plastic</div></div>
     </div>
   </div>
-  <div>
-    <img src="talkhan-premium-box.jpg" alt="Premium Talkhan Box" style="box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
+  <div class="hero-img-wrap reveal" style="transition-delay:0.2s;">
+    <img src="talkhan-starter-pack.jpg" alt="Talkhan Starter Pack" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
   </div>
 </section>
 
-<section id="products">
+<!-- ── FEATURES ── -->
+<section id="features">
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <span class="feature-icon">🌿</span>
+      <h3>100% Natural</h3>
+      <p>No artificial flavors, colors, or preservatives. Just real food.</p>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.1s;">
+      <span class="feature-icon">♻️</span>
+      <h3>Plastic-Free</h3>
+      <p>Eco-friendly packaging that looks great and feels even better.</p>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.2s;">
+      <span class="feature-icon">⚡</span>
+      <h3>Sustained Energy</h3>
+      <p>No sugar crash. Just clean, steady fuel for your day.</p>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.3s;">
+      <span class="feature-icon">🌍</span>
+      <h3>Ships Worldwide</h3>
+      <p>Free shipping on orders over €50. From Germany to your door.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products" style="background:var(--bg2);">
   <div class="section-header">
     <div class="hero-badge">CHOOSE YOUR BOOST</div>
     <h2 class="section-title">Fuel your day, your way</h2>
     <p style="color:var(--text2); margin-top:1rem;">Free worldwide shipping on orders over €50!</p>
   </div>
-  
+
   <div class="products-grid">
     <div class="product-card reveal">
       <img src="talkhan-starter-pack.jpg" alt="Starter Pack">
@@ -139,7 +275,7 @@
         <button onclick="addToCart(1)" class="add-btn">Add to Cart</button>
       </div>
     </div>
-    <div class="product-card reveal">
+    <div class="product-card reveal" style="transition-delay:0.1s;">
       <img src="talkhan-boost-pack.jpg" alt="Boost Pack">
       <div class="product-info">
         <h3>Boost Pack</h3>
@@ -148,8 +284,8 @@
         <button onclick="addToCart(2)" class="add-btn">Add to Cart</button>
       </div>
     </div>
-    <div class="product-card reveal">
-      <img src="talkhan-premium-bundle.jpg" alt="Premium Bundle">
+    <div class="product-card reveal" style="transition-delay:0.2s;">
+      <img src="talkhan-boost-pack.jpg" alt="Premium Bundle">
       <div class="product-info">
         <h3>Premium Bundle</h3>
         <p style="color:var(--text2);">450g + 3 boxes • Gift-ready</p>
@@ -157,9 +293,9 @@
         <button onclick="addToCart(3)" class="add-btn">Add to Cart</button>
       </div>
     </div>
-    <div class="product-card reveal" style="border-color: var(--accent);">
-      <div style="position:absolute; top:15px; right:15px; background:var(--accent); color:#0e0e0e; padding:5px 10px; border-radius:8px; font-weight:bold; font-size:0.8rem;">SHIPS FREE</div>
-      <img src="talkhan-ultimate-pack.jpg" alt="Ultimate Fuel Pack">
+    <div class="product-card reveal" style="border-color: var(--accent); transition-delay:0.3s;">
+      <div style="position:absolute; top:15px; right:15px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0e0e0e; padding:5px 14px; border-radius:8px; font-weight:bold; font-size:0.8rem; z-index:1;">SHIPS FREE</div>
+      <img src="talkhan-starter-pack.jpg" alt="Ultimate Fuel Pack">
       <div class="product-info">
         <h3>Ultimate Fuel Pack</h3>
         <p style="color:var(--text2);">750g • One month supply</p>
@@ -170,7 +306,8 @@
   </div>
 </section>
 
-<section id="nutrition" style="background:var(--bg2);">
+<!-- ── NUTRITION ── -->
+<section id="nutrition">
   <div class="section-header">
     <h2 class="section-title">Nothing to hide.</h2>
     <p style="color:var(--text2); max-width:600px; margin:1rem auto 0;">Just three powerful ingredients: Hand-pressed mulberries, walnuts, and almonds. Designed to give you sustained energy without the sugar crash.</p>
@@ -199,10 +336,73 @@
   </div>
 </section>
 
-<section id="legal-notice" style="background:var(--bg);">
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="section-header">
+    <div class="hero-badge">WHAT PEOPLE SAY</div>
+    <h2 class="section-title">Loved by athletes &amp; students</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Finally a snack that actually gives me energy without the crash. Tastes incredible and I love that it's plastic-free!"</p>
+      <div class="testimonial-author">— Leila, Marathon Runner 🇩🇪</div>
+    </div>
+    <div class="testimonial-card reveal" style="transition-delay:0.15s;">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I eat the Boost Pack before every exam. My focus is on another level. Highly recommend to every student!"</p>
+      <div class="testimonial-author">— Jonas, University of Koblenz 📚</div>
+    </div>
+    <div class="testimonial-card reveal" style="transition-delay:0.3s;">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I ordered the Ultimate Pack and it lasted me all month. Amazing value, amazing taste. Shipping was super fast!"</p>
+      <div class="testimonial-author">— Amira, Yoga Instructor 🧘</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRIVACY POLICY ── -->
+<section id="privacy">
+  <div class="section-header">
+    <div class="hero-badge">🔒 DATA &amp; PRIVACY</div>
+    <h2 class="section-title">Privacy Policy</h2>
+    <p style="color:var(--text2); margin-top:1rem;">We believe privacy is a right, not a privilege.</p>
+  </div>
+  <div class="privacy-box reveal">
+    <h3>1. Who We Are</h3>
+    <p>Talkhan Superfood operates the website at this domain. We are committed to protecting your personal data and being fully transparent about how we use it.</p>
+    <p>Contact for privacy matters: <a href="mailto:hello@talkhansuperfood.me" style="color:var(--accent);">hello@talkhansuperfood.me</a></p>
+
+    <h3>2. Data We Collect</h3>
+    <p><strong>When you place an order via PayPal:</strong> Payment and delivery information is processed directly by PayPal. We receive only the information necessary to fulfil your order (your name, shipping address, and order details).</p>
+    <p><strong>Cookies:</strong> We use one essential cookie (<code>privacy_accepted</code>) to remember your privacy consent choice. We do not use tracking, advertising, or analytics cookies.</p>
+    <p><strong>Contact emails:</strong> If you email us, we store your email address and message solely to respond to your enquiry.</p>
+
+    <h3>3. How We Use Your Data</h3>
+    <p>We use your data exclusively to process and deliver your order, respond to customer service enquiries, and comply with legal obligations under German law (HGB, AO). We do not sell, rent, or share your personal data with any third parties for marketing purposes.</p>
+
+    <h3>4. Legal Basis (GDPR)</h3>
+    <p>Processing is based on: <strong>Art. 6(1)(b) GDPR</strong> (performance of a contract) for order fulfilment, and <strong>Art. 6(1)(f) GDPR</strong> (legitimate interests) for basic website operation.</p>
+
+    <h3>5. Your Rights</h3>
+    <p>Under the GDPR you have the right to: access your data, correct inaccurate data, request deletion, restrict or object to processing, and data portability. To exercise any of these rights, email us at <a href="mailto:hello@talkhansuperfood.me" style="color:var(--accent);">hello@talkhansuperfood.me</a>. You also have the right to lodge a complaint with your local data protection authority.</p>
+
+    <h3>6. Data Retention</h3>
+    <p>Order-related data is retained for 10 years in line with German commercial and tax law. Email correspondence is deleted after 3 years unless a longer retention period is legally required.</p>
+
+    <h3>7. Third-Party Services</h3>
+    <p><strong>PayPal:</strong> Payments are processed by PayPal (Europe) S.à r.l. et Cie, S.C.A. Please review <a href="https://www.paypal.com/en/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener" style="color:var(--accent);">PayPal's Privacy Policy</a>.</p>
+    <p><strong>Google Fonts:</strong> We load fonts from Google's CDN. Google may log your IP address when the fonts are fetched. Please review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent);">Google's Privacy Policy</a>.</p>
+
+    <h3>8. Changes to This Policy</h3>
+    <p>We may update this policy from time to time. Any significant changes will be communicated via a notice on this website. Last updated: March 2026.</p>
+  </div>
+</section>
+
+<!-- ── LEGAL NOTICE ── -->
+<section id="legal-notice" style="background:var(--bg2);">
   <div class="section-header"><h2 class="section-title">Legal Notice (Impressum)</h2></div>
-  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px; border: 2px dashed red;">
-    <p style="color: red; font-weight: bold; text-align:center;">⚠️ ACTION REQUIRED: Fill in your legal details below before launch!</p>
+  <div style="max-width:800px;margin:0 auto;line-height:1.8;font-size:0.95rem;color:var(--text2);padding:2rem;background:var(--card);border-radius:20px; border: 1px solid var(--border);">
     <p><strong>Angaben gemäß § 5 TMG</strong></p>
     <p><strong>Talkhan Superfood</strong><br>
     [Your Full Name or Company Name]<br>
@@ -210,17 +410,16 @@
     [ZIP Code] Koblenz<br>
     Germany</p>
     <p><strong>Contact</strong><br>
-    E-Mail: hello@talkhansuperfood.me<br>
-    Phone: 015248414768</p>
+    E-Mail: hello@talkhansuperfood.me</p>
     <p><strong>VAT ID</strong><br>
-    Umsatzsteuer-Identifikationsnummer: [Your VAT-ID or “applied for”]</p>
+    Umsatzsteuer-Identifikationsnummer: [Your VAT-ID or "applied for"]</p>
   </div>
 </section>
 
 <footer>
   <div class="nav-logo" style="font-size:2rem;margin-bottom:1rem;">TALKHAN</div>
   <p>Premium natural energy snacks • Plastic-free forever • Made for young people who care</p>
-  
+
   <div class="social-links">
     <a href="https://www.instagram.com/talkhansuperfood/" target="_blank" title="Instagram" aria-label="Instagram profile with 500+ followers">📸 Instagram · <span id="ig-followers">500+</span> Followers</a>
     <a href="#" target="_blank" title="TikTok">🎵 TikTok</a>
@@ -229,7 +428,6 @@
   <div class="footer-links" style="margin:2rem 0;">
     <a href="#legal-notice">Legal Notice</a>
     <a href="#privacy">Privacy Policy</a>
-    <a href="#terms">Terms & Conditions (AGB)</a>
     <a href="mailto:hello@talkhansuperfood.me">Contact</a>
   </div>
   <p style="font-size:0.85rem;">© 2026 Talkhan Superfood • Ships worldwide with ❤️ from Germany</p>
@@ -237,10 +435,12 @@
 
 <div id="toast">Added to cart ✓</div>
 
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" aria-label="Back to top">↑</button>
+
 <div id="cart-modal" class="cart-modal">
   <div class="cart-content">
     <h3 style="margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
-      Your Cart 
+      Your Cart
       <span onclick="hideCart()" style="cursor:pointer;font-size:1.8rem;">×</span>
     </h3>
     <div id="cart-items"></div>
@@ -251,6 +451,7 @@
 </div>
 
 <script>
+  // ── THEME ──
   function toggleTheme() {
     const html = document.documentElement;
     const btn = document.querySelector('.theme-toggle');
@@ -261,12 +462,13 @@
     }
   }
 
+  // ── CART ──
   let cart = [];
   const products = [
     { id: 1, name: "Starter Pack", price: 9.99, img: "talkhan-starter-pack.jpg" },
     { id: 2, name: "Boost Pack", price: 19.99, img: "talkhan-boost-pack.jpg" },
-    { id: 3, name: "Premium Bundle", price: 29.99, img: "talkhan-premium-bundle.jpg" },
-    { id: 4, name: "Ultimate Fuel Pack", price: 50.00, img: "talkhan-ultimate-pack.jpg" } // New Product Added here!
+    { id: 3, name: "Premium Bundle", price: 29.99, img: "talkhan-boost-pack.jpg" },
+    { id: 4, name: "Ultimate Fuel Pack", price: 50.00, img: "talkhan-starter-pack.jpg" }
   ];
 
   function addToCart(id) {
@@ -282,8 +484,8 @@
 
   function showToast() {
     const toast = document.getElementById('toast');
-    toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 2200);
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2400);
   }
 
   function showCart() {
@@ -308,10 +510,11 @@
           </div>`;
       });
     }
-    
-    // Check for free shipping logic
-    let shippingText = total >= 50 ? "<br><span style='font-size:1rem; color:#25D366;'>+ FREE Shipping 🌍</span>" : `<br><span style='font-size:1rem; color:var(--text2);'>Add €${(50 - total).toFixed(2)} more for FREE shipping</span>`;
-    
+
+    const shippingText = total >= 50
+      ? "<br><span style='font-size:1rem; color:#25D366;'>+ FREE Shipping 🌍</span>"
+      : `<br><span style='font-size:1rem; color:var(--text2);'>Add €${(50 - total).toFixed(2)} more for FREE shipping</span>`;
+
     document.getElementById('cart-total').innerHTML = `Total: €${total.toFixed(2)} ${total > 0 ? shippingText : ''}`;
     modal.style.display = 'flex';
   }
@@ -338,12 +541,48 @@
     }
   }
 
+  // ── PRIVACY POPUP ──
+  function acceptPrivacy() {
+    try { localStorage.setItem('privacy_accepted', '1'); } catch(e) {}
+    document.getElementById('privacy-popup').classList.remove('visible');
+  }
+
+  function declinePrivacy() {
+    document.getElementById('privacy-popup').classList.remove('visible');
+  }
+
+  function scrollToPrivacy() {
+    document.getElementById('privacy-popup').classList.remove('visible');
+    document.getElementById('privacy').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function initPrivacyPopup() {
+    let accepted = false;
+    try { accepted = localStorage.getItem('privacy_accepted') === '1'; } catch(e) {}
+    if (!accepted) {
+      setTimeout(() => {
+        document.getElementById('privacy-popup').classList.add('visible');
+      }, 1200);
+    }
+  }
+
+  // ── SCROLL REVEAL ──
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
 
+  // ── NAV SCROLL ──
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const btn = document.getElementById('back-to-top');
+    if (window.scrollY > 60) { nav.classList.add('scrolled'); btn.classList.add('show'); }
+    else { nav.classList.remove('scrolled'); btn.classList.remove('show'); }
+  });
+
+  // ── INIT ──
   updateCartCount();
+  initPrivacyPopup();
 </script>
 </body>
 </html>
