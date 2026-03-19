@@ -97,6 +97,8 @@
     .price { font-size: 2rem; color: var(--accent); font-weight: 900; }
     .add-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0e0e0e; padding: 1rem; border-radius: 999px; margin-top: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.25s; border: none; font-size: 1rem; }
     .add-btn:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
+    .quick-btn { width: 100%; background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 0.85rem; border-radius: 999px; margin-top: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.25s; font-size: 1rem; }
+    .quick-btn:hover { background: var(--accent); color: #0e0e0e; transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
 
     /* ── NUTRITION ── */
     .nutrition-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 800px; margin: 0 auto; text-align: center; }
@@ -284,6 +286,7 @@
         <p style="color:var(--text2);">150g • Perfect first taste</p>
         <div class="price">€9.99</div>
         <button onclick="addToCart(1)" class="add-btn">Add to Cart</button>
+        <button onclick="quickBuy(1)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
     <div class="product-card reveal" style="transition-delay:0.1s;">
@@ -293,6 +296,7 @@
         <p style="color:var(--text2);">300g • For busy days</p>
         <div class="price">€19.99</div>
         <button onclick="addToCart(2)" class="add-btn">Add to Cart</button>
+        <button onclick="quickBuy(2)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
     <div class="product-card reveal" style="transition-delay:0.2s;">
@@ -302,6 +306,7 @@
         <p style="color:var(--text2);">450g + 3 boxes • Gift-ready</p>
         <div class="price">€29.99</div>
         <button onclick="addToCart(3)" class="add-btn">Add to Cart</button>
+        <button onclick="quickBuy(3)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
     <div class="product-card reveal" style="border-color: var(--accent); transition-delay:0.3s;">
@@ -312,6 +317,7 @@
         <p style="color:var(--text2);">750g • One month supply</p>
         <div class="price">€50.00</div>
         <button onclick="addToCart(4)" class="add-btn">Add to Cart</button>
+        <button onclick="quickBuy(4)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
   </div>
@@ -530,6 +536,15 @@
     cart.push({...product});
     updateCartCount();
     showToast();
+  }
+
+  function quickBuy(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+    const confirmed = confirm(`⚡ Quick Buy: ${product.name}\nTotal: €${product.price.toFixed(2)}\n\nClick OK to pay instantly with PayPal.\n\nIMPORTANT: On the PayPal page, please enter exactly €${product.price.toFixed(2)} as the amount.`);
+    if (confirmed) {
+      window.open("https://www.paypal.com/ncp/payment/3AHXTZRU673FU", "_blank");
+    }
   }
 
   function updateCartCount() {
