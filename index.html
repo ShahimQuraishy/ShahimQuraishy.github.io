@@ -100,6 +100,15 @@
     .quick-btn { width: 100%; background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 0.85rem; border-radius: 999px; margin-top: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.25s; font-size: 1rem; }
     .quick-btn:hover { background: var(--accent); color: #0e0e0e; transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
 
+    /* ── SINGLE PIECE FLIP IMAGE ── */
+    .single-img-wrap { position: relative; height: 280px; overflow: hidden; }
+    .single-img-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease, transform 0.4s; border-radius: 0; }
+    .single-img-wrap .img-back { opacity: 0; }
+    .product-card:hover .single-img-wrap .img-back { opacity: 1; transform: scale(1.05); }
+    .product-card:hover .single-img-wrap .img-front { opacity: 0; transform: scale(1.05); }
+    .flip-hint { position: absolute; bottom: 8px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.72rem; padding: 3px 9px; border-radius: 6px; z-index: 2; pointer-events: none; transition: opacity 0.3s; }
+    .product-card:hover .flip-hint { opacity: 0; }
+
     /* ── NUTRITION ── */
     .nutrition-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 800px; margin: 0 auto; text-align: center; }
     .macros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
@@ -272,7 +281,7 @@
     <p class="hero-sub reveal-left" style="transition-delay:0.2s;">Real taste. Zero plastic. Pure energy.</p>
     <p class="hero-desc reveal-left" style="transition-delay:0.3s;">Hand-pressed mulberry energy snacks made for students, athletes &amp; anyone who wants natural fuel without the crash. Eco-friendly packaging that actually looks cool.</p>
     <div class="hero-btns reveal-left" style="transition-delay:0.4s;">
-      <a href="#products" class="btn-primary">Shop Now – from €9.99</a>
+      <a href="#products" class="btn-primary">Shop Now – from €3.99</a>
       <a href="#nutrition" class="btn-outline">Learn More</a>
     </div>
     <div class="hero-stats reveal-left" style="transition-delay:0.5s;">
@@ -282,7 +291,7 @@
     </div>
   </div>
   <div class="hero-img-wrap reveal" style="transition-delay:0.2s;">
-    <img src="talkhan-starter-pack.jpg" alt="Talkhan Starter Pack" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
+    <img src="Talkhan-starter-pack-1.jpeg" alt="Talkhan Starter Pack" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
   </div>
 </section>
 
@@ -321,45 +330,64 @@
   </div>
 
   <div class="products-grid">
+    <!-- Single Piece (hover to see back) -->
     <div class="product-card reveal">
-      <img src="talkhan-starter-pack.jpg" alt="Starter Pack">
+      <div class="single-img-wrap">
+        <img src="single-piece.jpeg" alt="Single Piece – Front" class="img-front">
+        <img src="Talkhan-single-piece-back.jpeg" alt="Single Piece – Back" class="img-back">
+        <span class="flip-hint">↩ hover to flip</span>
+      </div>
       <div class="product-info">
-        <h3>Starter Pack</h3>
-        <p style="color:var(--text2);">150g • Perfect first taste</p>
-        <div class="price">€9.99</div>
+        <h3>Single Piece</h3>
+        <p style="color:var(--text2);">Try one • Perfect intro</p>
+        <div class="price">€3.99</div>
         <button onclick="addToCart(1)" class="add-btn">Add to Cart</button>
         <button onclick="quickBuy(1)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
+    <!-- Starter Pack -->
     <div class="product-card reveal" style="transition-delay:0.1s;">
-      <img src="talkhan-boost-pack.jpg" alt="Boost Pack">
+      <img src="Talkhan-starter-pack-1.jpeg" alt="Starter Pack">
       <div class="product-info">
-        <h3>Boost Pack</h3>
-        <p style="color:var(--text2);">300g • For busy days</p>
-        <div class="price">€19.99</div>
+        <h3>Starter Pack</h3>
+        <p style="color:var(--text2);">Perfect first taste</p>
+        <div class="price">€9.99</div>
         <button onclick="addToCart(2)" class="add-btn">Add to Cart</button>
         <button onclick="quickBuy(2)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
+    <!-- 4-Pack -->
     <div class="product-card reveal" style="transition-delay:0.2s;">
-      <img src="talkhan-boost-pack.jpg" alt="Premium Bundle">
+      <img src="4er-pack.jpeg" alt="4-Pack">
       <div class="product-info">
-        <h3>Premium Bundle</h3>
-        <p style="color:var(--text2);">450g + 3 boxes • Gift-ready</p>
-        <div class="price">€29.99</div>
+        <h3>4-Pack</h3>
+        <p style="color:var(--text2);">For busy days</p>
+        <div class="price">€14.99</div>
         <button onclick="addToCart(3)" class="add-btn">Add to Cart</button>
         <button onclick="quickBuy(3)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
-    <div class="product-card reveal" style="border-color: var(--accent); transition-delay:0.3s;">
-      <div style="position:absolute; top:15px; right:15px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0e0e0e; padding:5px 14px; border-radius:8px; font-weight:bold; font-size:0.8rem; z-index:1;">SHIPS FREE</div>
-      <img src="talkhan-starter-pack.jpg" alt="Ultimate Fuel Pack">
+    <!-- 8-Pack -->
+    <div class="product-card reveal" style="transition-delay:0.3s;">
+      <img src="8erpack.jpg" alt="8-Pack">
       <div class="product-info">
-        <h3>Ultimate Fuel Pack</h3>
-        <p style="color:var(--text2);">750g • One month supply</p>
-        <div class="price">€50.00</div>
+        <h3>8-Pack</h3>
+        <p style="color:var(--text2);">For the whole week</p>
+        <div class="price">€24.99</div>
         <button onclick="addToCart(4)" class="add-btn">Add to Cart</button>
         <button onclick="quickBuy(4)" class="quick-btn">⚡ Quick Buy</button>
+      </div>
+    </div>
+    <!-- Premium 18-Pack -->
+    <div class="product-card reveal" style="border-color: var(--accent); transition-delay:0.4s;">
+      <div style="position:absolute; top:15px; right:15px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0e0e0e; padding:5px 14px; border-radius:8px; font-weight:bold; font-size:0.8rem; z-index:1;">SHIPS FREE</div>
+      <img src="Talkhan-premium-18er-pack.jpeg" alt="Premium 18-Pack">
+      <div class="product-info">
+        <h3>Premium 18-Pack</h3>
+        <p style="color:var(--text2);">One month supply</p>
+        <div class="price">€49.99</div>
+        <button onclick="addToCart(5)" class="add-btn">Add to Cart</button>
+        <button onclick="quickBuy(5)" class="quick-btn">⚡ Quick Buy</button>
       </div>
     </div>
   </div>
@@ -564,20 +592,24 @@
   </div>
   <div class="qb-panel-body">
     <div class="qb-item">
-      <div class="qb-item-info"><strong>Starter Pack</strong><span>150g — €9.99</span></div>
+      <div class="qb-item-info"><strong>Single Piece</strong><span>Try one — €3.99</span></div>
       <button class="qb-item-btn" onclick="quickBuy(1)">⚡ Buy</button>
     </div>
     <div class="qb-item">
-      <div class="qb-item-info"><strong>Boost Pack</strong><span>300g — €19.99</span></div>
+      <div class="qb-item-info"><strong>Starter Pack</strong><span>Perfect first taste — €9.99</span></div>
       <button class="qb-item-btn" onclick="quickBuy(2)">⚡ Buy</button>
     </div>
     <div class="qb-item">
-      <div class="qb-item-info"><strong>Premium Bundle</strong><span>450g — €29.99</span></div>
+      <div class="qb-item-info"><strong>4-Pack</strong><span>For busy days — €14.99</span></div>
       <button class="qb-item-btn" onclick="quickBuy(3)">⚡ Buy</button>
     </div>
     <div class="qb-item">
-      <div class="qb-item-info"><strong>Ultimate Fuel Pack</strong><span>750g — €50.00 🚚</span></div>
+      <div class="qb-item-info"><strong>8-Pack</strong><span>For the whole week — €24.99</span></div>
       <button class="qb-item-btn" onclick="quickBuy(4)">⚡ Buy</button>
+    </div>
+    <div class="qb-item">
+      <div class="qb-item-info"><strong>Premium 18-Pack</strong><span>One month supply — €49.99 🚚</span></div>
+      <button class="qb-item-btn" onclick="quickBuy(5)">⚡ Buy</button>
     </div>
   </div>
 </div>
@@ -597,10 +629,11 @@
   // ── CART ──
   let cart = [];
   const products = [
-    { id: 1, name: "Starter Pack", price: 9.99, img: "talkhan-starter-pack.jpg" },
-    { id: 2, name: "Boost Pack", price: 19.99, img: "talkhan-boost-pack.jpg" },
-    { id: 3, name: "Premium Bundle", price: 29.99, img: "talkhan-boost-pack.jpg" },
-    { id: 4, name: "Ultimate Fuel Pack", price: 50.00, img: "talkhan-starter-pack.jpg" }
+    { id: 1, name: "Single Piece", price: 3.99, img: "single-piece.jpeg" },
+    { id: 2, name: "Starter Pack", price: 9.99, img: "Talkhan-starter-pack-1.jpeg" },
+    { id: 3, name: "4-Pack", price: 14.99, img: "4er-pack.jpeg" },
+    { id: 4, name: "8-Pack", price: 24.99, img: "8erpack.jpg" },
+    { id: 5, name: "Premium 18-Pack", price: 49.99, img: "Talkhan-premium-18er-pack.jpeg" }
   ];
 
   function addToCart(id) {
