@@ -100,6 +100,14 @@
     .quick-btn { width: 100%; background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 0.85rem; border-radius: 999px; margin-top: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.25s; font-size: 1rem; }
     .quick-btn:hover { background: var(--accent); color: #0e0e0e; transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
 
+    /* ── PRODUCT IMAGE SLIDER ── */
+    .product-slider { position: relative; overflow: hidden; }
+    .slider-track { display: flex; transition: transform 0.4s ease; }
+    .slider-track img { flex: 0 0 100%; }
+    .slider-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 1; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+    .dot.active { background: var(--accent); }
+
     /* ── NUTRITION ── */
     .nutrition-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 800px; margin: 0 auto; text-align: center; }
     .macros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
@@ -323,7 +331,18 @@
   <div class="products-grid">
     <!-- Starter Pack -->
     <div class="product-card reveal" style="transition-delay:0.1s;">
-      <img src="Talkhan-starter-pack-1.jpeg" alt="Starter Pack">
+      <div class="product-slider" id="slider-starter-pack">
+        <div class="slider-track">
+          <img src="Talkhan-starter-pack-1.jpeg" alt="Starter Pack">
+          <img src="single-piece.jpeg" alt="Single Piece">
+          <img src="Talkhan-single-piece-back.jpeg" alt="Single Piece Back">
+        </div>
+        <div class="slider-dots">
+          <button class="dot active" onclick="goToSlide('slider-starter-pack',0)" aria-label="Starter Pack photo 1"></button>
+          <button class="dot" onclick="goToSlide('slider-starter-pack',1)" aria-label="Starter Pack photo 2"></button>
+          <button class="dot" onclick="goToSlide('slider-starter-pack',2)" aria-label="Starter Pack photo 3"></button>
+        </div>
+      </div>
       <div class="product-info">
         <h3>Starter Pack</h3>
         <p style="color:var(--text2);">Perfect first taste</p>
@@ -751,6 +770,13 @@
       toggleQBPanel();
     }
   });
+
+  // ── PRODUCT IMAGE SLIDER ──
+  function goToSlide(sliderId, index) {
+    const slider = document.getElementById(sliderId);
+    slider.querySelector('.slider-track').style.transform = `translateX(-${index * 100}%)`;
+    slider.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
+  }
 
   // ── SCROLL REVEAL ──
   const obs = new IntersectionObserver(entries => {
