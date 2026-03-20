@@ -90,7 +90,7 @@
     .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
     .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: all 0.35s; position: relative; }
     .product-card:hover { transform: translateY(-12px); box-shadow: 0 24px 60px rgba(0,0,0,0.35); border-color: rgba(201,148,26,0.3); }
-    .product-card img { height: 280px; width: 100%; object-fit: cover; transition: transform 0.4s; }
+    .product-card img { height: 280px; width: 100%; object-fit: contain; background: var(--bg); transition: transform 0.4s; }
     .product-card:hover img { transform: scale(1.05); }
     .product-info { padding: 2rem; }
     .product-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
@@ -99,15 +99,6 @@
     .add-btn:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
     .quick-btn { width: 100%; background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 0.85rem; border-radius: 999px; margin-top: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.25s; font-size: 1rem; }
     .quick-btn:hover { background: var(--accent); color: #0e0e0e; transform: scale(1.03); box-shadow: 0 8px 25px rgba(201,148,26,0.4); }
-
-    /* ── SINGLE PIECE FLIP IMAGE ── */
-    .single-img-wrap { position: relative; height: 280px; overflow: hidden; }
-    .single-img-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease, transform 0.4s; border-radius: 0; }
-    .single-img-wrap .img-back { opacity: 0; }
-    .product-card:hover .single-img-wrap .img-back { opacity: 1; transform: scale(1.05); }
-    .product-card:hover .single-img-wrap .img-front { opacity: 0; transform: scale(1.05); }
-    .flip-hint { position: absolute; bottom: 8px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.72rem; padding: 3px 9px; border-radius: 6px; z-index: 2; pointer-events: none; transition: opacity 0.3s; }
-    .product-card:hover .flip-hint { opacity: 0; }
 
     /* ── NUTRITION ── */
     .nutrition-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 800px; margin: 0 auto; text-align: center; }
@@ -281,7 +272,7 @@
     <p class="hero-sub reveal-left" style="transition-delay:0.2s;">Real taste. Zero plastic. Pure energy.</p>
     <p class="hero-desc reveal-left" style="transition-delay:0.3s;">Hand-pressed mulberry energy snacks made for students, athletes &amp; anyone who wants natural fuel without the crash. Eco-friendly packaging that actually looks cool.</p>
     <div class="hero-btns reveal-left" style="transition-delay:0.4s;">
-      <a href="#products" class="btn-primary">Shop Now – from €3.99</a>
+      <a href="#products" class="btn-primary">Shop Now – from €9.99</a>
       <a href="#nutrition" class="btn-outline">Learn More</a>
     </div>
     <div class="hero-stats reveal-left" style="transition-delay:0.5s;">
@@ -330,21 +321,6 @@
   </div>
 
   <div class="products-grid">
-    <!-- Single Piece (hover to see back) -->
-    <div class="product-card reveal">
-      <div class="single-img-wrap">
-        <img src="single-piece.jpeg" alt="Single Piece – Front" class="img-front">
-        <img src="Talkhan-single-piece-back.jpeg" alt="Single Piece – Back" class="img-back">
-        <span class="flip-hint">↩ hover to flip</span>
-      </div>
-      <div class="product-info">
-        <h3>Single Piece</h3>
-        <p style="color:var(--text2);">Try one • Perfect intro</p>
-        <div class="price">€3.99</div>
-        <button onclick="addToCart(1)" class="add-btn">Add to Cart</button>
-        <button onclick="quickBuy(1)" class="quick-btn">⚡ Quick Buy</button>
-      </div>
-    </div>
     <!-- Starter Pack -->
     <div class="product-card reveal" style="transition-delay:0.1s;">
       <img src="Talkhan-starter-pack-1.jpeg" alt="Starter Pack">
@@ -592,10 +568,6 @@
   </div>
   <div class="qb-panel-body">
     <div class="qb-item">
-      <div class="qb-item-info"><strong>Single Piece</strong><span>Try one — €3.99</span></div>
-      <button class="qb-item-btn" onclick="quickBuy(1)">⚡ Buy</button>
-    </div>
-    <div class="qb-item">
       <div class="qb-item-info"><strong>Starter Pack</strong><span>Perfect first taste — €9.99</span></div>
       <button class="qb-item-btn" onclick="quickBuy(2)">⚡ Buy</button>
     </div>
@@ -629,7 +601,6 @@
   // ── CART ──
   let cart = [];
   const products = [
-    { id: 1, name: "Single Piece", price: 3.99, img: "single-piece.jpeg" },
     { id: 2, name: "Starter Pack", price: 9.99, img: "Talkhan-starter-pack-1.jpeg" },
     { id: 3, name: "4-Pack", price: 14.99, img: "4er-pack.jpeg" },
     { id: 4, name: "8-Pack", price: 24.99, img: "8erpack.jpg" },
