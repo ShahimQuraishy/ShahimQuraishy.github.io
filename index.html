@@ -253,6 +253,7 @@
   <div class="nav-right">
     <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
     <a href="#products" style="font-weight:600;">Shop</a>
+    <a href="#showcase" style="font-weight:600;">Details</a>
     <button onclick="showCart()" class="cart-icon">🛒 <span id="cart-count" class="cart-count">0</span></button>
   </div>
 </nav>
@@ -282,7 +283,7 @@
     </div>
   </div>
   <div class="hero-img-wrap reveal" style="transition-delay:0.2s;">
-    <img src="Talkhan-starter-pack-1.jpeg" alt="Talkhan Starter Pack" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
+    <img src="talkhan-starter-pack-hero.jpg" alt="Talkhan Starter Pack" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
   </div>
 </section>
 
@@ -323,7 +324,7 @@
   <div class="products-grid">
     <!-- Starter Pack -->
     <div class="product-card reveal" style="transition-delay:0.1s;">
-      <img src="Talkhan-starter-pack-1.jpeg" alt="Starter Pack">
+      <img src="talkhan-starter-pack-hero.jpg" alt="Starter Pack">
       <div class="product-info">
         <h3>Starter Pack</h3>
         <p style="color:var(--text2);">Perfect first taste</p>
@@ -334,7 +335,7 @@
     </div>
     <!-- 4-Pack -->
     <div class="product-card reveal" style="transition-delay:0.2s;">
-      <img src="4er-pack.jpeg" alt="4-Pack">
+      <img src="talkhan-4-pack.jpg" alt="4-Pack">
       <div class="product-info">
         <h3>4-Pack</h3>
         <p style="color:var(--text2);">For busy days</p>
@@ -345,7 +346,7 @@
     </div>
     <!-- 8-Pack -->
     <div class="product-card reveal" style="transition-delay:0.3s;">
-      <img src="8erpack.jpg" alt="8-Pack">
+      <img src="talkhan-8-pack.jpg" alt="8-Pack">
       <div class="product-info">
         <h3>8-Pack</h3>
         <p style="color:var(--text2);">For the whole week</p>
@@ -357,7 +358,7 @@
     <!-- Premium 18-Pack -->
     <div class="product-card reveal" style="border-color: var(--accent); transition-delay:0.4s;">
       <div style="position:absolute; top:15px; right:15px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0e0e0e; padding:5px 14px; border-radius:8px; font-weight:bold; font-size:0.8rem; z-index:1;">SHIPS FREE</div>
-      <img src="Talkhan-premium-18er-pack.jpeg" alt="Premium 18-Pack">
+      <img src="talkhan-18-pack-premium.jpg" alt="Premium 18-Pack">
       <div class="product-info">
         <h3>Premium 18-Pack</h3>
         <p style="color:var(--text2);">One month supply</p>
@@ -396,6 +397,28 @@
       </div>
     </div>
     <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text2);">*Naturally occurring sugars from mulberries. Zero artificial syrups.</p>
+  </div>
+</section>
+
+<!-- ── PRODUCT SHOWCASE ── -->
+<section id="showcase" style="background:var(--bg);">
+  <div class="section-header">
+    <div class="hero-badge">SEE THE DETAILS</div>
+    <h2 class="section-title">Crafted with care</h2>
+    <p style="color:var(--text2); max-width:600px; margin:1rem auto 0;">Every Talkhan piece is hand-pressed with the finest mulberries, walnuts, and almonds. See the quality up close.</p>
+  </div>
+  
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1000px; margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <img src="talkhan-single-piece-front.jpg" alt="Talkhan Single Piece Front" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Pure Ingredients</h3>
+      <p style="color:var(--text2);">Natural texture and color from real mulberries</p>
+    </div>
+    <div class="reveal" style="text-align:center; transition-delay:0.1s;">
+      <img src="talkhan-single-piece-back.jpg" alt="Talkhan Single Piece Back" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Perfectly Pressed</h3>
+      <p style="color:var(--text2);">Hand-made craftsmanship in every piece</p>
+    </div>
   </div>
 </section>
 
@@ -601,10 +624,10 @@
   // ── CART ──
   let cart = [];
   const products = [
-    { id: 2, name: "Starter Pack", price: 9.99, img: "Talkhan-starter-pack-1.jpeg" },
-    { id: 3, name: "4-Pack", price: 14.99, img: "4er-pack.jpeg" },
-    { id: 4, name: "8-Pack", price: 24.99, img: "8erpack.jpg" },
-    { id: 5, name: "Premium 18-Pack", price: 49.99, img: "Talkhan-premium-18er-pack.jpeg" }
+    { id: 2, name: "Starter Pack", price: 9.99, img: "talkhan-starter-pack-hero.jpg" },
+    { id: 3, name: "4-Pack", price: 14.99, img: "talkhan-4-pack.jpg" },
+    { id: 4, name: "8-Pack", price: 24.99, img: "talkhan-8-pack.jpg" },
+    { id: 5, name: "Premium 18-Pack", price: 49.99, img: "talkhan-18-pack-premium.jpg" }
   ];
 
   function addToCart(id) {
