@@ -174,6 +174,21 @@
     .social-links a { color: var(--text); font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.2s, transform 0.2s; display: inline-block; }
     .social-links a:hover { color: var(--accent); transform: scale(1.1); }
 
+    /* ── HERITAGE STORY ── */
+    .heritage-card { background:rgba(245,240,232,0.05); border:1px solid rgba(245,240,232,0.1); border-radius:20px; padding:2rem; transition:all 0.3s; }
+    .heritage-card:hover { transform: translateY(-8px); box-shadow:0 20px 40px rgba(201,148,26,0.3); }
+    .heritage-card h3 { color:var(--accent); margin-bottom:1rem; }
+    .heritage-card h4 { color:var(--accent); margin-bottom:0.5rem; }
+    .heritage-card p { color:rgba(245,240,232,0.8); line-height:1.7; }
+    .heritage-card blockquote { border-left:3px solid var(--accent); padding-left:1rem; margin:1.5rem 0; font-style:italic; color:rgba(245,240,232,0.7); }
+    .heritage-card cite { font-size:0.9rem; }
+
+    /* ── PREMIUM GALLERY ── */
+    .premium-card { border-radius:20px; overflow:hidden; transition:all 0.3s; }
+    .premium-card:hover { transform: translateY(-8px); }
+    .premium-card img { transition:transform 0.5s ease; }
+    .premium-card:hover img { transform: scale(1.05); }
+
     /* ── LIFESTYLE GALLERY ── */
     .lifestyle-card { border-radius:20px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,0.3); transition:all 0.3s; background:var(--card); }
     .lifestyle-card:hover { transform: translateY(-8px); box-shadow:0 25px 50px rgba(0,0,0,0.4); }
@@ -271,6 +286,7 @@
   <div class="nav-logo">TALKHAN</div>
   <div class="nav-right">
     <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+    <a href="#heritage" style="font-weight:600;">Heritage</a>
     <a href="#products" style="font-weight:600;">Shop</a>
     <a href="#lifestyle" style="font-weight:600;">Gallery</a>
     <a href="#payment-methods" style="font-weight:600;">Payment</a>
@@ -285,6 +301,79 @@
     🔒 Secure Payments &nbsp;•&nbsp; 🌍 Ships Worldwide &nbsp;•&nbsp; ♻️ 100% Plastic-Free &nbsp;•&nbsp; ⭐ Trusted by 200+ Athletes
   </div>
 </div>
+
+<!-- ── HERITAGE STORY ── -->
+<section id="heritage" style="background:linear-gradient(135deg, #0e0e0e, #1a1a1a); padding:4rem 5%; color:#F5F0E8;">
+  <div class="section-header">
+    <div class="hero-badge" style="background:rgba(201,148,26,0.2); color:var(--accent); border:1px solid rgba(201,148,26,0.3);">🏔️ LEGENDARY HISTORY</div>
+    <h2 class="section-title" style="color:#F5F0E8;">More Than Just a Snack</h2>
+    <p style="color:rgba(245,240,232,0.8); max-width:700px; margin:1rem auto 0; font-size:1.1rem;">Talkhan isn't just food—it's a living symbol of Afghan resilience, food sovereignty, and Tajik mountain culture.</p>
+  </div>
+  
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:3rem; max-width:1200px; margin:0 auto;">
+    
+    <!-- The Legend -->
+    <div class="heritage-card reveal" style="transition-delay:0.1s; background:rgba(245,240,232,0.05); border:1px solid rgba(245,240,232,0.1); border-radius:20px; padding:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">⚔️</div>
+      <h3 style="color:var(--accent); margin-bottom:1rem;">The Energy Bar That Defeated the Soviet Union</h3>
+      <p style="color:rgba(245,240,232,0.8); line-height:1.7;">During the Soviet-Afghan War (1979-1989), Talkhan became the main ration for Mujahideen fighters in the Tajik mountains. A 100g pack provided 500 calories and could last for months without refrigeration—even in freezing temperatures.</p>
+      <blockquote style="border-left:3px solid var(--accent); padding-left:1rem; margin:1.5rem 0; font-style:italic; color:rgba(245,240,232,0.7);">
+        "The two hundred Mujahideen here have no lunch... We cannot even find dried mulberries and talkhan because all the houses are burned."
+        <br><cite style="font-size:0.9rem;">— Mujahideen account after Soviet scorched-earth offensive</cite>
+      </blockquote>
+    </div>
+    
+    <!-- Cultural Heritage -->
+    <div class="heritage-card reveal" style="transition-delay:0.2s; background:rgba(245,240,232,0.05); border:1px solid rgba(245,240,232,0.1); border-radius:20px; padding:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">🌿</div>
+      <h3 style="color:var(--accent); margin-bottom:1rem;">Sacred Mountain Berry</h3>
+      <p style="color:rgba(245,240,232,0.8); line-height:1.7;">In Yezidi practice, mulberry trees are sacred and associated with healing and endurance. Talkhan represents the wisdom of the mountains—pure nature without sugar, without preservatives, without compromise.</p>
+      <div style="background:rgba(201,148,26,0.1); padding:1rem; border-radius:12px; margin-top:1rem;">
+        <h4 style="color:var(--accent); margin-bottom:0.5rem;">🍽 Spiritual Dimensions:</h4>
+        <ul style="list-style:none; padding:0; color:rgba(245,240,232,0.8);">
+          <li style="margin-bottom:0.5rem;">✨ Mulberry = Purity and Healing</li>
+          <li style="margin-bottom:0.5rem;">🧘 Sufi Symbolism: Patience and Soul Journey</li>
+          <li style="margin-bottom:0.5rem;">💪 Medicinal Belief: Causes no thirst, stomach heaviness, or fatigue</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Geographic Heart -->
+    <div class="heritage-card reveal" style="transition-delay:0.3s; background:rgba(245,240,232,0.05); border:1px solid rgba(245,240,232,0.1); border-radius:20px; padding:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">🏔️</div>
+      <h3 style="color:var(--accent); margin-bottom:1rem;">Geographic & Cultural Heartland</h3>
+      <p style="color:rgba(245,240,232,0.8); line-height:1.7;">Core regions: Parwan, Panjshir, Kapisa (northern Afghanistan) and southern Tajikistan. Highland Tajiks, Lapis Lazuli miners in Panjshir mountains, and mountain communities who needed food that wouldn't spoil.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+        <div style="background:rgba(201,148,26,0.1); padding:1rem; border-radius:12px;">
+          <h4 style="color:var(--accent); margin-bottom:0.5rem;">🏔️ Why These Regions?</h4>
+          <p style="font-size:0.9rem; color:rgba(245,240,232,0.8); margin:0;">Mulberry trees thrive at high altitudes; harsh climate made preservation essential.</p>
+        </div>
+        <div style="background:rgba(201,148,26,0.1); padding:1rem; border-radius:12px;">
+          <h4 style="color:var(--accent); margin-bottom:0.5rem;">👥 Traditional Users</h4>
+          <p style="font-size:0.9rem; color:rgba(245,240,232,0.8); margin:0;">Highland Tajiks, mountain communities, people who needed survival food.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modern Identity -->
+  <div style="text-align:center; margin-top:3rem;">
+    <div style="background:linear-gradient(135deg, var(--accent), var(--accent2)); padding:2rem; border-radius:20px; max-width:700px; margin:0 auto;">
+      <h3 style="color:#0e0e0e; margin-bottom:1rem;">🌍 Talkhan Today: Diaspora & Identity</h3>
+      <p style="color:rgba(14,14,14,0.9); margin-bottom:1.5rem;">In diaspora, Talkhan is no longer about survival—it becomes a symbol of identity. A "taste-test for identity," as immigrants bring it wrapped in tissue paper.</p>
+      <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
+        <div style="background:rgba(14,14,14,0.2); padding:1rem; border-radius:12px; text-align:left; min-width:200px;">
+          <h4 style="color:var(--accent); margin-bottom:0.5rem;">🏆 Slow Food Recognition</h4>
+          <p style="font-size:0.9rem; color:rgba(14,14,14,0.9); margin:0;">Listed in Slow Food Foundation's Ark of Taste</p>
+        </div>
+        <div style="background:rgba(14,14,14,0.2); padding:1rem; border-radius:12px; text-align:left; min-width:200px;">
+          <h4 style="color:var(--accent); margin-bottom:0.5rem;">🛡️ Survival Essence</h4>
+          <p style="font-size:0.9rem; color:rgba(14,14,14,0.9); margin:0;">500 calories from 100g of pure mulberry + walnut</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ── HERO ── -->
 <section id="hero">
@@ -304,7 +393,7 @@
     </div>
   </div>
   <div class="hero-img-wrap reveal" style="transition-delay:0.2s;">
-    <img src="talkhan-starter-pack-hero.jpg" alt="Talkhan Starter Pack" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
+    <img src="22.png" alt="Talkhan Superfood Premium" style="box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius:24px;">
   </div>
 </section>
 
@@ -555,14 +644,29 @@
   
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1000px; margin:0 auto;">
     <div class="reveal" style="text-align:center;">
-      <img src="talkhan-single-piece-front.jpg" alt="Talkhan Single Piece Front" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
-      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Pure Ingredients</h3>
-      <p style="color:var(--text2);">Natural texture and color from real mulberries</p>
+      <img src="12.png" alt="Talkhan Premium Collection" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3); border-radius:16px;">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Premium Quality</h3>
+      <p style="color:var(--text2);">Hand-selected mulberries and walnuts</p>
     </div>
     <div class="reveal" style="text-align:center; transition-delay:0.1s;">
-      <img src="talkhan-single-piece-back.jpg" alt="Talkhan Single Piece Back" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
-      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Perfectly Pressed</h3>
-      <p style="color:var(--text2);">Hand-made craftsmanship in every piece</p>
+      <img src="22.png" alt="Talkhan Detail View" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3); border-radius:16px;">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Perfect Texture</h3>
+      <p style="color:var(--text2);">Hand-pressed natural consistency</p>
+    </div>
+    <div class="reveal" style="text-align:center; transition-delay:0.2s;">
+      <img src="33.png" alt="Talkhan Natural Ingredients" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3); border-radius:16px;">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Pure Nature</h3>
+      <p style="color:var(--text2);">100% natural ingredients</p>
+    </div>
+    <div class="reveal" style="text-align:center; transition-delay:0.3s;">
+      <img src="44.png" alt="Talkhan Packaging" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3); border-radius:16px;">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Eco-Friendly</h3>
+      <p style="color:var(--text2);">Plastic-free sustainable packaging</p>
+    </div>
+    <div class="reveal" style="text-align:center; transition-delay:0.4s;">
+      <img src="221.png" alt="Talkhan Production Process" style="margin:0 auto 1.5rem; box-shadow:0 20px 40px rgba(0,0,0,0.3); border-radius:16px;">
+      <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Traditional Craft</h3>
+      <p style="color:var(--text2);">Centuries-old production methods</p>
     </div>
   </div>
 </section>
